@@ -149,6 +149,52 @@ html, body, #root, .app-container  {
   }
 }
 
+.tech-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  animation: techFadeOut 0.9s cubic-bezier(.77,0,.18,1) forwards;
+}
+
+@keyframes techFadeOut {
+  0% { opacity: 1; filter: blur(0) brightness(1); }
+  60% { opacity: 1; filter: blur(2px) brightness(1.2); }
+  100% { opacity: 0; filter: blur(8px) brightness(2); }
+}
+
+.tech-circuit-svg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.18;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(56,189,248,0.08) 0px,
+    rgba(56,189,248,0.08) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.25;
+  pointer-events: none;
+  mix-blend-mode: lighten;
+  animation: scanlinesFade 0.9s cubic-bezier(.77,0,.18,1) forwards;
+}
+
+@keyframes scanlinesFade {
+  0% { opacity: 0.25; }
+  80% { opacity: 0.4; }
+  100% { opacity: 0; }
+}
+
 .hero-section > * {
   position: relative;
   z-index: 1;
@@ -375,6 +421,13 @@ html, body, #root, .app-container  {
   background: rgba(24,24,27,0.85);
   border-radius: 16px;
   box-shadow: 0 4px 32px 0 #38bdf822;
+}
+
+.contact-section h2 {
+  font-size: 2.8rem;
+  color: #38bdf8;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
 }
 
 .contact-form label {
@@ -938,3 +991,4 @@ footer p {
   color: #38bdf8;
   border: 1px solid #38bdf8;
 }
+
