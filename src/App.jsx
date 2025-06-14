@@ -83,6 +83,32 @@ function handleContactClick(e) {
   }
 }
 
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value,
+  };
+
+  const res = await fetch("https://formspree.io/f/your-form-id", {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (res.ok) {
+    alert("Message sent!");
+    form.reset(); // This clears the form fields
+  } else {
+    alert("Error sending message.");
+  }
+};
+
 useEffect(() => {
   if (showSplash) {
     setSplashBgFaded(false);
@@ -466,8 +492,7 @@ return (
 
                 <section id="contact" className="contact-section" data-aos="fade-up">
                   <h2>Contact</h2>
-                  <form
-                    className="contact-form"
+                  <form className="contact-form" onSubmit={handleSubmit}
                     action="https://formspree.io/f/xrbkkzqn"
                     method="POST"
                   >
