@@ -3,27 +3,27 @@ import React, { useEffect, useRef, useState } from 'react'
 const codeSnippets = [
   {
     lang: 'js',
-    code: `// Fetch featured\nconst res = await fetch('/api/featured');`
+    code: `// Render a project card\n<ProjectCard title="Portfolio" />`
   },
   {
     lang: 'py',
-    code: `# Get projects\nimport requests\nprint(requests.get("https://jonasweeks.com/api/projects").json())`
+    code: `# Print project titles\nfor p in projects:\n    print(p["title"])`
   },
   {
     lang: 'html',
-    code: `<h2>About Jonas Weeks</h2>`
+    code: `<img src="/logo.svg" alt="Jonas Weeks Logo" />`
   },
   {
     lang: 'css',
-    code: `.glow-white { color: #fff; }`
+    code: `.cta-btn:hover { color: #38bdf8; }`
   },
   {
     lang: 'json',
-    code: `{"portfolio":"Jonas Weeks"}`
+    code: `{"name":"Jonas Weeks","role":"Developer"}`
   },
   {
     lang: 'bash',
-    code: `git clone https://github.com/jonasweeks/my-portfolio.git`
+    code: `npm run build`
   }
 ];
 
