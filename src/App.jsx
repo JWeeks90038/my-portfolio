@@ -487,7 +487,7 @@ return (
                   </form>
                 </section>
               </main>
-              <a href="#top" className="back-to-top-link">↑ Back to Top</a>
+              <a href="#top" className="back-to-top-link">↑ Back to Top</a><br></br><br></br>
               <footer ref={footerRef}>
   <div className="social-links">
     <a href="https://github.com/JWeeks90038" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
