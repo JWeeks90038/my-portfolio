@@ -6,7 +6,6 @@ import ProjectsPage from "./ProjectsPage";
 import ScrollToTop from "./ScrollToTop";
 import FloatingCodeSymbols from "./FloatingCodeSymbols";
 import { FaGithub, FaFacebook, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import './App.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
