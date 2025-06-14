@@ -1,0 +1,52 @@
+.matrix-splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #18181b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.9s cubic-bezier(.77,0,.18,1);
+  opacity: 1;
+}
+
+.matrix-fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.matrix-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.matrix-splash-name {
+  color: #38f87a;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-family: 'JetBrains Mono', 'Fira Mono', 'Menlo', monospace;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  text-shadow:
+    0 0 16px #38f87a,
+    0 0 2px #fff,
+    2px 0 #38bdf8,
+    -2px 0 #f43f5e;
+  z-index: 2;
+  animation: matrix-glitch 1.1s linear;
+  position: relative;
+}
+
+@keyframes matrix-glitch {
+  0%, 100% { text-shadow: 2px 0 #38bdf8, -2px 0 #f43f5e; }
+  10%, 60% { text-shadow: 4px 2px #38bdf8, -4px -2px #f43f5e; }
+  20%, 70% { text-shadow: -2px 0 #38bdf8, 2px 0 #f43f5e; }
+  30%, 80% { text-shadow: 2px 2px #38bdf8, -2px -2px #f43f5e; }
+  40%, 90% { text-shadow: 0 0 #38bdf8, 0 0 #f43f5e; }
+  50% { text-shadow: 2px 0 #38bdf8, -2px 0 #f43f5e; }
+}
