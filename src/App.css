@@ -893,19 +893,6 @@ html, body {
   }
 }
 
-.atmospheric-gradient-bg,
-.hazy-bg,
-.tech-circuit-svg {
-   position: fixed;
-  inset: 0;
-  width: 100%;
-  max-width: 100vw;
-  height: 100%;
-  max-height: 100vh;
-  left: 0;
-  right: 0;
-}
-
 .name-glow-animate {
   animation: nameGlowFizzle 1.8s cubic-bezier(.77,0,.18,1) 0.2s 1 both;
 }
