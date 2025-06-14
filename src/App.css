@@ -912,3 +912,21 @@ footer p {
     0 0 4px #38bdf8;
   /* Adjust the color and blur for your preferred glow */
 }
+
+.back-to-top-link {
+  display: inline-block;
+  margin: 2rem auto 0 auto;
+  padding: 0.5em 1.2em;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 2em;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px #2563eb33;
+  transition: background 0.2s;
+}
+.back-to-top-link:hover {
+  background: #38bdf8;
+  color: #18181b;
+}

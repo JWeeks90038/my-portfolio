@@ -2,6 +2,8 @@ import React from "react";
 import { FaGithub, FaFacebook, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import "./App.css";
 
+<a id="top"></a>
+
 const projects = [
     {
     title: "Mindful Gateway Therapy",
@@ -54,6 +56,8 @@ export default function ProjectsPage() {
           ))}
         </div>
       </section>
+
+      <a href="#top" className="back-to-top-link">↑ Back to Top</a>
 
       <footer>
         <div className="social-links">
