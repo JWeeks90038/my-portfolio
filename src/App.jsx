@@ -25,6 +25,7 @@ function App() {
   const [showGlow, setShowGlow] = useState(false);
   const [splashFading, setSplashFading] = useState(false);
   const [splashBgFaded, setSplashBgFaded] = useState(false);
+  const [formMessage, setFormMessage] = useState("");
 
   const contentRef = useRef(null);
   const footerRef = useRef(null);
@@ -102,10 +103,10 @@ const handleSubmit = async (e) => {
   });
 
   if (res.ok) {
-    alert("Message sent!");
-    form.reset(); // This clears the form fields
+    setFormMessage("Message sent!");
+    form.reset();
   } else {
-    alert("Error sending message.");
+    setFormMessage("Error sending message.");
   }
 };
 
@@ -509,6 +510,9 @@ return (
                       <textarea name="message" rows="5" required />
                     </label>
                     <button type="submit">Send</button>
+  {formMessage && (
+    <div className="form-message">{formMessage}</div>
+  )}
                   </form>
                 </section>
               </main>
