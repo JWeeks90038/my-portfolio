@@ -333,6 +333,7 @@ html, body {
 
 .animated-code-multi-container {
   position: relative;
+  overflow-x: hidden;
   width: 100%;
   max-width: 100vw;    /* Use the full viewport width */
   min-height: 260px;
@@ -345,7 +346,7 @@ html, body {
   position: absolute;
   min-width: 0;
   width: 100%;
-  max-width: 900px;
+  max-width: 100vw;
   max-height: 700px;
   font-family: 'Fira Mono', monospace;
   font-size: 1.05rem;
@@ -362,6 +363,12 @@ html, body {
   opacity: 0.95;
   transition: opacity 0.3s;
   overflow: visible;
+  box-sizing: border-box;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  white-space: pre-wrap !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .floating-code-multi.lang-py { color: #ffde57; border-color: #ffde57; }
@@ -371,6 +378,18 @@ html, body {
 .floating-code-multi.lang-js { color: #ffe066; border-color: #ffe066; }
 .floating-code-multi.lang-json { color: #ffb347; border-color: #ffb347; }
 .floating-code-multi.lang-bash { color: #7fffd4; border-color: #7fffd4; }
+
+@media (max-width: 600px) {
+  .animated-code-multi-container,
+  .floating-code-multi {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
 
 .hazy-bg {
   position: fixed;
