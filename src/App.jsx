@@ -285,10 +285,10 @@ useEffect(() => {
 });
 return (
   <>
-  <div className="atmospheric-gradient-bg" aria-hidden="true"></div>
+    <div className="atmospheric-gradient-bg" aria-hidden="true"></div>
     {showSplash ? (
-       <>
-       <div className={`splash-black-bg${splashBgFaded ? ' faded' : ''}`}></div>
+      <div className={`splash-fade${splashFading ? ' out' : ''}`}>
+        <div className={`splash-black-bg${splashBgFaded ? ' faded' : ''}`}></div>
         <div className="hazy-bg" aria-hidden="true"></div>
         <div className="hazy-blob blob1"></div>
         <div className="hazy-blob blob2"></div>
@@ -296,11 +296,21 @@ return (
         <div className="splash-screen">
           <span className="splash-terminal-glitch" aria-label="Jonas Weeks">
             <span className={showGlow ? "name-glow-animate" : ""}>
-  Jonas Weeks
-</span>
+              Jonas Weeks
+            </span>
           </span>
         </div>
-      </>
+        {splashFading && (
+          <div className="tech-transition-overlay">
+            <svg viewBox="0 0 100 100" className="tech-circuit-svg">
+              <line x1="0" y1="0" x2="100" y2="100" stroke="#38bdf8" strokeWidth="1.5" />
+              <line x1="0" y1="100" x2="100" y2="0" stroke="#38bdf8" strokeWidth="1.5" />
+              {/* Add more lines/shapes for effect */}
+            </svg>
+            <div className="scanlines"></div>
+          </div>
+        )}
+      </div>
     ) : (
       <>
       <a id="top"></a>
@@ -430,6 +440,7 @@ return (
             <div>
               {/* Hero Section */}
             <section className="hero-section" data-aos="fade-up">
+              <div class="glass-card">
   <div className="name-border-animate">
   <span className={showGlow ? "name-glow-animate" : ""}>
       Jonas Weeks
@@ -459,7 +470,9 @@ return (
     <span className="tech-badge">Solidity</span>
     <span className="tech-badge">Web3</span>
     <span className="tech-badge">Python</span>
-  </div><br></br><br></br>
+  </div>
+  </div>
+  <br></br><br></br>
 
   <Link to="/projects" className="cta-btn">See My Work</Link>
 </section>
@@ -474,7 +487,7 @@ return (
                   <div className="about-text">
                   <div>
                     <p>
-                      A self-taught full stack developer with a passion for building creative and impactful web applications. With two projects already under my belt, I thrive on learning by doing and love turning ideas into real, working products. My journey proves that curiosity and determination are the best teachers in tech!
+                      A self-taught full stack developer with a passion for building creative and impactful web applications. With three projects already under my belt, I thrive on learning by doing and love turning ideas into real, working products. My journey proves that curiosity and determination are the best teachers in tech!
                     </p>
                     <p>
                       Every project I take on is an opportunity to push my skills further and explore new technologies. From designing intuitive user interfaces to architecting robust backend systems, I enjoy the challenge of bringing all the pieces together into a seamless experience. My hands-on approach means I’m always experimenting, iterating, and refining my craft.
