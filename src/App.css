@@ -605,6 +605,7 @@ html, body, #root, .app-container  {
 }
 
 .glow-white-section {
+  margin-top: 0.7rem;
   margin-bottom: 19rem;
 }
 
@@ -640,7 +641,7 @@ html, body, #root, .app-container  {
 
 .name-border-svg rect {
   fill: none;
-  stroke: #121212;
+  stroke: #00faff;
   stroke-width: 2.5;
   stroke-dasharray: 940; /* perimeter of the rectangle */
   stroke-dashoffset: 940;
@@ -655,6 +656,8 @@ html, body, #root, .app-container  {
     stroke-dashoffset: 0;
   }
 }
+
+
 
 .hero-section h1,
 .name-border-animate {
@@ -923,8 +926,80 @@ html, body, #root, .app-container  {
   }
 }
 
+.circuit-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: circuitFadeOut 1.2s 0.8s forwards;
+}
+
+@keyframes circuitFadeOut {
+  to {
+    opacity: 0;
+    filter: blur(8px);
+  }
+}
+
+.circuit-svg {
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.7;
+}
+
+.circuit-line {
+  stroke: #38bdf8;
+  stroke-width: 3;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  animation: drawCircuit 0.8s cubic-bezier(.77,0,.18,1) forwards;
+}
+
+.circuit-line:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.circuit-line:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.circuit-line:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+@keyframes drawCircuit {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 .name-glow-animate {
   animation: nameGlowFizzle 1.8s cubic-bezier(.77,0,.18,1) 0.2s 1 both;
+}
+
+@keyframes nameZoomOutInfinite {
+  0% {
+    transform: scale(8);
+    opacity: 0.7;
+    filter: blur(2px) brightness(0.8);
+  }
+  10% {
+    opacity: 1;
+    filter: blur(0.5px) brightness(1.1);
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 1;
+    filter: blur(0) brightness(1.2);
+  }
+}
+
+.name-zoom-out {
+  display: inline-block;
+  animation: nameZoomOutInfinite 4s cubic-bezier(.77,0,.18,1) forwards;
+  will-change: transform, filter, opacity;
 }
 
 .splash-terminal-glitch,

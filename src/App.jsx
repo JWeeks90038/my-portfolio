@@ -119,8 +119,7 @@ useEffect(() => {
 }, [showSplash]);
 
 useEffect(() => {
-  const timer = setTimeout(() => setShowSplash(false), 4700); // 4.7 seconds
-  return () => clearTimeout(timer);
+  setShowGlow(true);
 }, []);
 
 useEffect(() => {
@@ -286,32 +285,7 @@ useEffect(() => {
 return (
   <>
     <div className="atmospheric-gradient-bg" aria-hidden="true"></div>
-    {showSplash ? (
-      <div className={`splash-fade${splashFading ? ' out' : ''}`}>
-        <div className={`splash-black-bg${splashBgFaded ? ' faded' : ''}`}></div>
-        <div className="hazy-bg" aria-hidden="true"></div>
-        <div className="hazy-blob blob1"></div>
-        <div className="hazy-blob blob2"></div>
-        <div className="hazy-blob blob3"></div>
-        <div className="splash-screen">
-          <span className="splash-terminal-glitch" aria-label="Jonas Weeks">
-            <span className={showGlow ? "name-glow-animate" : ""}>
-              Jonas Weeks
-            </span>
-          </span>
-        </div>
-        {splashFading && (
-          <div className="tech-transition-overlay">
-            <svg viewBox="0 0 100 100" className="tech-circuit-svg">
-              <line x1="0" y1="0" x2="100" y2="100" stroke="#38bdf8" strokeWidth="1.5" />
-              <line x1="0" y1="100" x2="100" y2="0" stroke="#38bdf8" strokeWidth="1.5" />
-              {/* Add more lines/shapes for effect */}
-            </svg>
-            <div className="scanlines"></div>
-          </div>
-        )}
-      </div>
-    ) : (
+   
       <>
       <a id="top"></a>
   <ScrollToTop />
@@ -558,7 +532,6 @@ return (
          </div>
         </div>
           </>
-    )}
   </>
 );
 }
