@@ -6,6 +6,7 @@ import ProjectsPage from "./ProjectsPage";
 import ScrollToTop from "./ScrollToTop";
 import FloatingCodeSymbols from "./FloatingCodeSymbols";
 import { FaGithub, FaFacebook, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import './App.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -276,6 +277,7 @@ return (
       </>
     ) : (
       <>
+      <a id="top"></a>
   <ScrollToTop />
   <div className={`site-fade-in${fadeIn ? ' visible' : ''}`}>
     <div className="atmospheric-gradient-bg" aria-hidden="true"></div>
@@ -433,7 +435,7 @@ return (
     <span className="tech-badge">Python</span>
   </div><br></br><br></br>
 
-  <a href="/projects" className="cta-btn">See My Work</a>
+  <Link to="/projects" className="cta-btn">See My Work</Link>
 </section>
 
               <main>
@@ -442,7 +444,7 @@ return (
                 </div>
                 <br /><br /><br />
                 <section id="projects" className="glow-white-section" data-aos="fade-up">
-                  <h2>Who Am I?</h2>
+                  <h2>Meet the Maker:</h2>
                   <div className="about-text">
                   <div>
                     <p>
@@ -486,9 +488,10 @@ return (
                   </form>
                 </section>
               </main>
+              <a href="#top" className="back-to-top-link">↑ Back to Top</a>
               <footer ref={footerRef}>
   <div className="social-links">
-    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+    <a href="https://github.com/JWeeks90038" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
       <FaGithub />
     </a>
     <a href="https://www.facebook.com/profile.php?id=61566879270909" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
