@@ -388,6 +388,7 @@ html, body {
     overflow-x: hidden !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
+    word-break: break-all !important;
   }
 }
 
