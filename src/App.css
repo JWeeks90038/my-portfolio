@@ -560,7 +560,7 @@ html, body, #root, .app-container  {
   padding: 0.5rem 2rem;
   font-size: 3rem;
   font-weight: 800;
-  color: #b0bec5;
+  color: #CFCFCF;
   background: none;
   top: 75px;
 }
@@ -914,7 +914,7 @@ footer p {
 }
 
 .back-to-top-link {
-   padding: 0.8rem 2rem;
+   padding: 0.2em 0.7em;   /* smaller padding */
   background: #38bdf8;
   color: #18181b;
   border: none;
