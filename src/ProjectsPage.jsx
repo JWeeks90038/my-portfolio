@@ -57,7 +57,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <a href="#top" className="back-to-top-link">↑ Back to Top</a>
+      <a href="#top" className="back-to-top-link">↑ Back to Top</a><br></br><br></br>
 
       <footer>
         <div className="social-links">
