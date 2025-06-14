@@ -241,11 +241,11 @@ html, body, #root, .app-container  {
   background: linear-gradient(
     90deg,
     #FFD700 0%,
-    #800080 15%,
+    #0B0C10 15%,
     #38bdf8 35%,
     #e0e6ed 50%,
     #38f87a 65%,
-    #FF0000 80%,
+    #0B0C10 80%,
     #e0e6ed 100%
   );
   background-size: 300% 300%;
