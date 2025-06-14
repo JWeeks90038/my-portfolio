@@ -92,7 +92,7 @@ useEffect(() => {
 }, [showSplash]);
 
 useEffect(() => {
-  const timer = setTimeout(() => setShowSplash(false), 5200); // 5.2 seconds
+  const timer = setTimeout(() => setShowSplash(false), 4700); // 4.7 seconds
   return () => clearTimeout(timer);
 }, []);
 
