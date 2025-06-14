@@ -919,7 +919,7 @@ footer p {
   color: #18181b;
   border: none;
   border-radius: 2rem;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 4px 16px 0 rgba(56,189,248,0.2);
@@ -928,26 +928,6 @@ footer p {
 }
 .back-to-top-link:hover {
     background: #18181b;
-  color: #38bdf8;
-  border: 1px solid #38bdf8;
-}
-
-.contact-form button {
-  padding: 0.8rem 2rem;
-  background: #38bdf8;
-  color: #18181b;
-  border: none;
-  border-radius: 2rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 16px 0 rgba(56,189,248,0.2);
-  transition: background 0.2s, color 0.2s;
-  text-decoration: none;
-}
-
-.contact-form button:hover {
-   background: #18181b;
   color: #38bdf8;
   border: 1px solid #38bdf8;
 }
