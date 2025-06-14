@@ -58,7 +58,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   html, body {
   margin: 0;
-  display: flex;
+  display: relative;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
