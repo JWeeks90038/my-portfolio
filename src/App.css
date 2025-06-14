@@ -766,8 +766,8 @@ html, body, #root, .app-container  {
     height: 120px;
   }
 
-  .floating-code-multi {
-    min-width: 90vw;
+   .floating-code-multi {
+    min-width: unset;
     max-width: 98vw;
     font-size: 0.85rem;
     padding: 8px 8px;
@@ -945,6 +945,16 @@ html, body, #root, .app-container  {
     opacity: 0;
     filter: blur(8px);
   }
+}
+
+.atmospheric-gradient-bg,
+.hazy-bg,
+.tech-circuit-svg,
+.circuit-svg {
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
 .circuit-svg {
