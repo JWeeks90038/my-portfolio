@@ -57,8 +57,8 @@ html, body {
 }
 
 .glow-navbar {
-  position: fixed;
-  top: 32px;
+  position: absolute;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   max-width: calc(100% - 24px);
@@ -568,19 +568,39 @@ html, body {
   font-size: 1.15rem; /* Slightly larger paragraphs */
 }
 
+.developer-photo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.developer-photo {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  /* Feathered edge effect: more gradual fade */
+  mask-image: radial-gradient(circle, white 55%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle, white 55%, transparent 100%);
+  box-shadow: none; /* Remove or reduce if you want no visible border/shadow */
+  filter: none;     /* Remove any drop-shadow or blur if you want only the feather */
+}
+
 .hero-section {
   margin-bottom: 1rem; /* or any value you prefer */
 }
 
 .glow-white-section {
-  margin-top: 0.7rem;
-  margin-bottom: 19rem;
+  margin-top: -6rem;
+  margin-bottom: -2rem;
 }
 
 /* Smaller margin for floating code and contact sections */
 .floating-code-symbols,
 .contact-section {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+  mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%);
 }
 
 .name-border-animate {
@@ -825,6 +845,7 @@ html, body {
 .about-text p {
   margin-bottom: 1.6em;
   letter-spacing: 0.01em;
+  font-size: 1.35rem;
 }
 
 footer p {

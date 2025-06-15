@@ -369,7 +369,14 @@ return (
                 </div>
                 <br /><br /><br />
                 <section id="projects" className="glow-white-section" data-aos="fade-up">
-                  <h2>Meet the Maker:</h2>
+                  <h2>Meet the Developer:</h2>
+                  <div className="developer-photo-container">
+    <img
+      src="/jonas-img.png" // <-- Replace with your actual image path
+      alt="Jonas Weeks"
+      className="developer-photo"
+    />
+  </div>
                   <div className="about-text">
                   <div>
                     <p>
