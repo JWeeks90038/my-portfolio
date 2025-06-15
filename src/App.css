@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
 
+* {
+  outline: 1px solid red;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
