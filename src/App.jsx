@@ -12,14 +12,14 @@ import 'aos/dist/aos.css';
 
 
 function App() {
-  const [scrollY, setScrollY] = useState(window.scrollY);
+  //const [scrollY, setScrollY] = useState(window.scrollY);
   const [time, setTime] = useState(0);
   const [gradientT, setGradientT] = useState(0);
   const [svgWidth, setSvgWidth] = useState(window.innerWidth);
   const [docHeight, setDocHeight] = useState(document.documentElement.scrollHeight);
   const [contentHeight, setContentHeight] = useState(window.innerHeight);
   const [footerRect, setFooterRect] = useState({ top: 0, height: 80 });
-  const [animatedOrbY, setAnimatedOrbY] = useState(0);
+  //const [animatedOrbY, setAnimatedOrbY] = useState(0);
   const [fadeIn, setFadeIn] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [showGlow, setShowGlow] = useState(false);
@@ -31,7 +31,7 @@ function App() {
   const footerRef = useRef(null);
 
     // Orb animation parameters
-  const mergeThreshold = 0.985;
+  /*const mergeThreshold = 0.985;
   const mergeRange = 0.015;
 
   const t = time / 600;
@@ -64,7 +64,7 @@ const bottomY = docHeight - orbRadius - bottomMargin;
     if (progress > maxProgress) return bottomY;
     const pct = (progress - minProgress) / (maxProgress - minProgress);
     return topY + (bottomY - topY) * pct;
-  };
+  };*/
 
   const navigate = useNavigate();
 const location = useLocation();
@@ -172,7 +172,7 @@ useEffect(() => {
   };
 }, []);
 
-useEffect(() => {
+/*useEffect(() => {
   let animationFrame;
   const animate = () => {
     const targetY = getOrbY();
@@ -184,7 +184,7 @@ useEffect(() => {
   };
   animate();
   return () => cancelAnimationFrame(animationFrame);
-}, [progress, time, svgWidth, contentHeight]);
+}, [progress, time, svgWidth, contentHeight]);*/
 
 useEffect(() => {
   const updateFooterRect = () => {
@@ -237,7 +237,7 @@ useEffect(() => {
   }
 
   // Calculate orb positions based on scroll progress
-  let leftOrb = { x: centerX, y: topY };
+  /*let leftOrb = { x: centerX, y: topY };
   let rightOrb = { x: centerX, y: topY };
   let showSingleTopOrb = false;
   let showSingleBottomOrb = false;
@@ -281,7 +281,7 @@ useEffect(() => {
   windowHeight: window.innerHeight,
   scrollableHeight: contentHeight - window.innerHeight,
   progress
-});
+});*/
 return (
   <>
     <div className="atmospheric-gradient-bg" aria-hidden="true"></div>
@@ -296,96 +296,8 @@ return (
     <div className="hazy-blob blob1"></div>
     <div className="hazy-blob blob2"></div>
     <div className="hazy-blob blob3"></div>
-    <svg
-      className="liquid-metal-orbs"
-      style={{
-        position: 'absolute',
-        left: '50%',
-        top: 0,
-        transform: 'translateX(-50%)',
-        zIndex: 200,
-        pointerEvents: 'none',
-        width: svgWidth,
-        height: contentHeight
-      }}
-      width={svgWidth}
-      height={docHeight}
-      viewBox={`${-svgWidth / 2} 0 ${svgWidth} ${docHeight}`}
-    >
-      <defs>
-        <radialGradient
-          id="orbGradient"
-          cx={`${50 + Math.sin(gradientT) * 10}%`}
-          cy={`${60 + Math.cos(gradientT / 1.5) * 10}%`}
-          r={`${60 + Math.sin(gradientT / 2) * 5}%`}
-        >
-          <stop offset="0%" stopColor="#b6e3ff" />
-          <stop offset="30%" stopColor="#38bdf8" />
-          <stop offset="55%" stopColor="#38f87a" />
-          <stop offset="80%" stopColor="#2563eb" />
-          <stop offset="100%" stopColor="rgba(24,24,27,0)" />
-        </radialGradient>
-        <filter id="orbGlow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation={18 * orbGlow} result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-
-      {/* Top orb */}
-      {showSingleTopOrb && (
-        <circle
-          cx={centerX}
-          cy={topY}
-          r={orbRadius}
-          fill="url(#orbGradient)"
-          filter="url(#orbGlow)"
-          opacity="1"
-          stroke="none"
-          style={{ stroke: "none" }}
-        />
-      )}
-      {/* Two orbs traveling sides and merging at bottom */}
-      {!showSingleTopOrb && !showSingleBottomOrb && [
-        <circle
-          key="left"
-          cx={leftOrb.x}
-          cy={leftOrb.y}
-          r={orbRadius}
-          fill="url(#orbGradient)"
-          filter="url(#orbGlow)"
-          opacity="1"
-          stroke="none"
-          style={{ stroke: "none" }}
-        />,
-        <circle
-          key="right"
-          cx={rightOrb.x}
-          cy={rightOrb.y}
-          r={orbRadius}
-          fill="url(#orbGradient)"
-          filter="url(#orbGlow)"
-          opacity="1"
-          stroke="none"
-          style={{ stroke: "none" }}
-        />
-      ]}
-      {/* Bottom orb */}
-      {showSingleBottomOrb && (
-        <circle
-          cx={centerX}
-          cy={bottomY}
-          r={orbRadius}
-          fill="url(#orbGradient)"
-          filter="url(#orbGlow)"
-          opacity="1"
-          stroke="none"
-          style={{ stroke: "none" }}
-        />
-      )}
-    </svg>
+ 
+      
     <div className="site-content" ref={contentRef}>
       <nav className="glow-navbar">
           <Link to="/" className="nav-orb">
@@ -414,7 +326,7 @@ return (
             <div>
               {/* Hero Section */}
             <section className="hero-section" data-aos="fade-up">
-              <div class="glass-card">
+              <div className="glass-card">
   <div className="name-border-animate">
   <span className={showGlow ? "name-glow-animate" : ""}>
       Jonas Weeks
