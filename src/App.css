@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
 
-* {
-  outline: 1px solid red;
-}
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -281,7 +277,7 @@ html, body {
 
 .animated-code-multi-container {
   position: relative;
-  overflow-x: auto;
+  overflow-x: hidden;
   width: 100%;
   max-width: 100%;    /* Use the full viewport width */
   min-height: 260px;
@@ -867,18 +863,23 @@ footer p {
   .hero-section,
   .animated-code-multi-container,
   .floating-code-multi {
-     width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  box-sizing: border-box;
-}
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
 }
 
 @media (max-width: 600px) {
   .animated-code-multi-container {
     width: 100% !important;
     max-width: 100% !important;
-    overflow-x: auto !important;
+    overflow-x: hidden !important;
     position: relative;
   }
   .floating-code-multi {
@@ -909,11 +910,16 @@ footer p {
   .hero-section,
   .animated-code-multi-container,
   .floating-code-multi {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  box-sizing: border-box;
-}
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
 }
 
 @media (max-width: 600px) {
