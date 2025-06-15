@@ -281,32 +281,40 @@ html, body {
 
 .animated-code-multi-container {
   position: relative;
+  overflow-x: auto;
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  box-sizing: border-box;
+  max-width: 100%;    /* Use the full viewport width */
+  min-height: 260px;
+  height: 260px;
+  margin: 0 auto 40px auto;
+  pointer-events: none;
 }
 
 .floating-code-multi {
   position: absolute;
   min-width: 0;
   width: 100%;
-  max-width: 90vw;
+  max-width: 100%;
   max-height: 700px;
   font-family: 'Fira Mono', monospace;
   font-size: 1.05rem;
+  /* background: rgba(24, 24, 27, 0.92); */   /* REMOVE */
   color: #b6e3ff;
   border-radius: 10px;
   padding: 14px 18px;
+  /* box-shadow: 0 4px 24px 0 #38bdf888; */   /* REMOVE */
   white-space: pre-wrap;
   word-break: break-word;
-  overflow-wrap: break-word;
   pointer-events: none;
   user-select: none;
+  /* border: 1px solid #38bdf8; */           /* REMOVE */
   opacity: 0.95;
   transition: opacity 0.3s;
   overflow: visible;
   box-sizing: border-box;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  white-space: pre-wrap !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
@@ -868,11 +876,10 @@ footer p {
 
 @media (max-width: 600px) {
   .animated-code-multi-container {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    position: relative;
   }
   .floating-code-multi {
     left: 0 !important;
@@ -887,7 +894,6 @@ footer p {
     padding-left: 0 !important;
     padding-right: 0 !important;
     overflow-x: auto !important;
-     font-size: 0.9rem;
   }
 }
 
@@ -901,30 +907,21 @@ footer p {
   .projects-list,
   .project-card,
   .hero-section,
-  .animated-code-multi-container {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    box-sizing: border-box;
-  }
+  .animated-code-multi-container,
   .floating-code-multi {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-    box-sizing: border-box;
-    white-space: pre-wrap;
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
 }
 
 @media (max-width: 600px) {
   .animated-code-multi-container {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    position: relative;
   }
   .floating-code-multi {
     left: 0 !important;
@@ -939,7 +936,6 @@ footer p {
     padding-left: 0 !important;
     padding-right: 0 !important;
     overflow-x: auto !important;
-     font-size: 0.9rem;
   }
 }
 
