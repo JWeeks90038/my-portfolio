@@ -218,7 +218,7 @@ useEffect(() => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     const interval = setInterval(() => setTime(Date.now()), 30);
@@ -226,7 +226,7 @@ useEffect(() => {
       window.removeEventListener('scroll', handleScroll);
       clearInterval(interval);
     };
-  }, []);
+  }, []);*/
 
   if (
     isNaN(svgWidth) || isNaN(contentHeight) ||
