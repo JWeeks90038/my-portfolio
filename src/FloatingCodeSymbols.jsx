@@ -24,7 +24,7 @@ export default function FloatingCodeSymbols({ count = 18 }) {
       const span = document.createElement("span");
       span.textContent = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
       span.style.position = "absolute";
-      span.style.left = `${randomBetween(0, 95)}%`;
+      span.style.left = `${randomBetween(0, 85)}%`;
       span.style.bottom = `-${randomBetween(10, 40)}px`;
       span.style.fontSize = `${randomBetween(1.2, 2.2)}rem`;
       span.style.opacity = 0.7;
@@ -43,9 +43,12 @@ export default function FloatingCodeSymbols({ count = 18 }) {
       style={{
         position: "relative",
         width: "100%",
+        maxWidth: "100%",
         height: "300px",
-        overflow: "visible",
+        overflowX: "hidden",
+        overflowY: "visible",
         pointerEvents: "none",
+        boxSizing: "border-box",
       }}
       className="floating-code-symbols"
     />
