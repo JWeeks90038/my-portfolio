@@ -42,10 +42,13 @@ export default function FloatingCodeSymbols({ count = 18 }) {
       ref={containerRef}
       style={{
         position: "relative",
-        width: "100%",
-        height: "300px",
-        overflow: "hidden",
-        pointerEvents: "none",
+    width: "100%",
+    maxWidth: "100%",
+    height: "500px", // <-- Increase this value
+    overflowX: "hidden",
+    overflowY: "visible",
+    pointerEvents: "none",
+    boxSizing: "border-box",
       }}
       className="floating-code-symbols"
     />
