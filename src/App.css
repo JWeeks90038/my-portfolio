@@ -35,11 +35,6 @@ html, body {
   animation: gradientMove 24s ease-in-out infinite alternate;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -51,15 +46,6 @@ html, body {
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .card {
@@ -171,38 +157,6 @@ html, body {
   100% { opacity: 0; filter: blur(8px) brightness(2); }
 }
 
-.tech-circuit-svg {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  opacity: 0.18;
-  left: 0;
-  top: 0;
-  pointer-events: none;
-}
-
-.scanlines {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(56,189,248,0.08) 0px,
-    rgba(56,189,248,0.08) 1px,
-    transparent 1px,
-    transparent 4px
-  );
-  opacity: 0.25;
-  pointer-events: none;
-  mix-blend-mode: lighten;
-  animation: scanlinesFade 0.9s cubic-bezier(.77,0,.18,1) forwards;
-}
-
-@keyframes scanlinesFade {
-  0% { opacity: 0.25; }
-  80% { opacity: 0.4; }
-  100% { opacity: 0; }
-}
-
 .hero-section > * {
   position: relative;
   z-index: 1;
@@ -308,13 +262,6 @@ html, body {
   background: #18181b;
   color: #38bdf8;
   border: 1px solid #38bdf8;
-}
-
-.liquid-metal-strip {
-  transition: filter 0.2s;
-  will-change: transform;
-  pointer-events: none;
-  mix-blend-mode: lighten;
 }
 
 .app-container {
@@ -855,48 +802,6 @@ html, body {
 
 .name-glow-animate {
   animation: nameGlowFizzle 1.8s cubic-bezier(.77,0,.18,1) 0.2s 1 both;
-}
-
-@keyframes nameZoomOutInfinite {
-  0% {
-    transform: scale(8);
-    opacity: 0.7;
-    filter: blur(2px) brightness(0.8);
-  }
-  10% {
-    opacity: 1;
-    filter: blur(0.5px) brightness(1.1);
-  }
-  100% {
-    transform: scale(0.8);
-    opacity: 1;
-    filter: blur(0) brightness(1.2);
-  }
-}
-
-.name-zoom-out {
-  display: inline-block;
-  animation: nameZoomOutInfinite 4s cubic-bezier(.77,0,.18,1) forwards;
-  will-change: transform, filter, opacity;
-}
-
-.splash-terminal-glitch,
-.name-border-animate,
-.name-border-animate span {
-  font-weight: 800; /* or 700, whichever looks best and matches your intro */
-}
-
-.splash-black-bg {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  opacity: 1;
-  z-index: 900;
-  transition: opacity 1.2s cubic-bezier(.77,0,.18,1);
-  pointer-events: none;
-}
-.splash-black-bg.faded {
-  opacity: 0;
 }
 
 .about-section h2 {
