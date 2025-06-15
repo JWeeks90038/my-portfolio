@@ -454,6 +454,11 @@ html, body {
 
 .projects-page h2 {
  font-size: 3.1rem;
+ color: #fff;
+  text-shadow:
+    0 0 1px #fff,
+    0 0 3px #38bdf8,
+    0 0 4px #38bdf8;
 }
 
 .projects-list {
