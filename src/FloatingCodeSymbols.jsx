@@ -44,7 +44,7 @@ export default function FloatingCodeSymbols({ count = 18 }) {
         position: "relative",
     width: "100%",
     maxWidth: "100%",
-    height: "500px", // <-- Increase this value
+    height: "800px", // <-- Increase this value
     overflowX: "hidden",
     overflowY: "visible",
     pointerEvents: "none",
