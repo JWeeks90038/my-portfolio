@@ -59,8 +59,8 @@ html, body {
 .glow-navbar {
   position: fixed;
   top: 32px;
-  left: 50%;
-  transform: translateX(-50%);
+  max-width: cal(100%-24px);
+  overflow-x: auto;
   display: flex;
   gap: 48px;
   background: rgba(30, 41, 59, 0.55);
@@ -306,7 +306,7 @@ html, body {
   /* border: 1px solid #38bdf8; */           /* REMOVE */
   opacity: 0.95;
   transition: opacity 0.3s;
-  overflow: visible;
+  overflow-x: auto;
   box-sizing: border-box;
   overflow-wrap: break-word !important;
   word-break: break-word !important;
@@ -948,5 +948,12 @@ footer p {
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
+  }
+}
+
+@media (max-width: 480px) {
+  .blob1, .blob2, .blob3 {
+    width: 180px;
+    height: auto;
   }
 }
