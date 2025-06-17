@@ -43,21 +43,35 @@ export default function ProjectsPage() {
               <div className="project-info">
                 <h3>{proj.title} <span className="project-year">({proj.year})</span></h3>
                 <p>{proj.description}</p>
-                <div className="project-meta">
-                  <div className="project-tech">
-                    {proj.tech.map((t, idx) => (
-                      <span key={idx} className="tech-badge">{t}</span>
-                    ))}
-                  </div>
-                  <a href={proj.link} target="_blank" rel="noopener noreferrer" className="project-link">Visit Site</a>
-                </div>
+               <div className="project-meta">
+  <div className="project-tech">
+    {proj.tech.map((t, idx) => (
+      <span key={idx} className="tech-badge">{t}</span>
+    ))}
+  </div>
+  <a
+    href={proj.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="project-link"
+    style={{ marginTop: "1em" }} // Optional: adds space between badges and button
+  >
+    Visit Site
+  </a>
+</div>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      <a href="#top" className="back-to-top-link">↑ Back to Top</a><br></br><br></br>
+      <button
+  className="back-to-top-link"
+  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+>
+  ↑ Back to Top
+</button>
+<br /><br />
 
       <footer>
         <div className="social-links">
