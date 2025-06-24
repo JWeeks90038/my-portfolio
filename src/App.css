@@ -1035,17 +1035,19 @@ html, body {
 }
 
 .availability-info {
-  background: rgba(56, 189, 248, 0.1);
+  background: rgba(24, 24, 27, 0.9); /* Darker, more solid background */
   border-left: 3px solid #38bdf8;
-  padding: 1rem; /* reduced from 1.5rem */
-  margin: 1.5rem 0; /* reduced from 2rem 0 */
+  padding: 1rem;
+  margin: 1.5rem 0;
   border-radius: 8px;
-  font-size: 0.9rem; /* added to make text smaller */
+  font-size: 0.9rem;
+  backdrop-filter: none; /* Remove blur effect */
 }
 
 .availability-info p {
-  margin: 0.5rem 0; /* reduced margins */
-  font-size: 0.95rem; /* smaller font */
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  text-shadow: none; /* Remove text shadow that causes blur */
 }
 
 .availability-info ul {
@@ -1093,11 +1095,12 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(56, 189, 248, 0.15);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: rgba(24, 24, 27, 0.95); /* Much more solid background */
+  border: 1px solid rgba(56, 189, 248, 0.4);
   border-radius: 8px;
-  padding: 0.6rem 1rem;
+  padding: 0.8rem 1.2rem; /* Slightly more padding */
   transition: all 0.3s ease;
+  backdrop-filter: none; /* Remove blur */
 }
 
 .rate-badge:hover {
@@ -1106,15 +1109,19 @@ html, body {
 }
 
 .service-type {
-  color: #e2e8f0;
-  font-size: 0.9rem;
-  font-weight: 500;
+  color: #f1f5f9; /* Brighter, clearer text */
+  font-size: 0.95rem;
+  font-weight: 600; /* Bolder for clarity */
+  text-shadow: none; /* Remove any blur effects */
+  letter-spacing: 0.02em;
 }
 
 .rate-range {
-  color: #91d6f4;
-  font-size: 0.85rem;
-  font-weight: 600;
+  color: #38bdf8;
+  font-size: 0.9rem;
+  font-weight: 700; /* Much bolder */
+  text-shadow: none; /* Remove blur */
+  letter-spacing: 0.02em;
 }
 
 @media (max-width: 768px) {
