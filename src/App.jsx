@@ -319,141 +319,176 @@ return (
       </nav>
       <br />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              {/* Hero Section */}
-            <section className="hero-section" data-aos="fade-up">
-              <div className="glass-card">
-  <div className="name-border-animate">
-  <span className={showGlow ? "name-glow-animate" : ""}>
-      Jonas Weeks
-    </span>
-  <svg className="name-border-svg" width="100%" height="100%" viewBox="0 0 400 70" preserveAspectRatio="none">
-    <rect x="2" y="2" width="396" height="66" rx="12" ry="12" />
-  </svg>
-</div><br></br><br></br><br></br>
-  <p>Full Stack Web Developer | Creative Coder | Problem Solver</p><br></br><br></br><br></br>
+<Routes>
+  <Route
+    path="/"
+    element={
+      <div>
+        {/* Hero Section */}
+        <div className="name-watermark">
+          <span>Jonas Weeks</span>
+        </div>
+        
+        <section className="hero-section" data-aos="fade-up">
+          <div className="glass-card">
+            <p>Full Stack Web Developer | Creative Coder | Problem Solver</p>
+            <br /><br /><br />
 
-  {/* Tech Stack Badges */}
-  <div className="tech-stack-badges">
-    <span className="tech-badge">React</span>
-    <span className="tech-badge">Next.js</span>
-    <span className="tech-badge">JavaScript</span>
-    <span className="tech-badge">TypeScript</span>
-    <span className="tech-badge">HTML</span>
-    <span className="tech-badge">CSS</span>
-    <span className="tech-badge">Tailwind CSS</span>
-    <span className="tech-badge">Firebase</span>
-    <span className="tech-badge">Node.js</span>
-    <span className="tech-badge">Git</span>
-    <span className="tech-badge">Vercel</span><br></br><br></br>
-  </div>
-  <div className="tech-stack-learning">
-    <span className="learning-label">In Learning Process:</span>
-    <span className="tech-badge">Solidity</span>
-    <span className="tech-badge">Web3</span>
-    <span className="tech-badge">Python</span>
-  </div>
-  </div>
-  <br></br><br></br>
-
-  <Link to="/projects" className="cta-btn">See My Work</Link>
-</section>
-
-              <main>
-                <div className="code-float-section" data-aos="fade-up">
-                  <AnimatedCode />
-                </div>
-                <br /><br /><br />
-                <section id="projects" className="glow-white-section" data-aos="fade-up">
-                  <h2>Meet the Developer:</h2>
-                  <div className="developer-photo-container">
-    <img
-      src="/jonas-img.png" // <-- Replace with your actual image path
-      alt="Jonas Weeks"
-      className="developer-photo"
-    />
-  </div>
-                  <div className="about-text">
-                  <div>
-                    <p>
-                      A self-taught full stack developer with a passion for building creative and impactful web applications. With three projects already under my belt, I thrive on learning by doing and love turning ideas into real, working products. My journey proves that curiosity and determination are the best teachers in tech!
-                    </p>
-                    <p>
-                      Every project I take on is an opportunity to push my skills further and explore new technologies. From designing intuitive user interfaces to architecting robust backend systems, I enjoy the challenge of bringing all the pieces together into a seamless experience. My hands-on approach means I’m always experimenting, iterating, and refining my craft.
-                    </p>
-                    <p>
-                      I believe that great software is built by those who are willing to learn, adapt, and solve problems creatively. My portfolio is a reflection of my growth as a developer and my commitment to delivering solutions that make a difference. I’m excited to continue this journey, tackling new challenges and building applications that leave a lasting impact.
-                    </p>
-                    {/* Add more projects here */}
-                  </div>
-                  </div>
-                </section>
-
-                <div className="floating-code-symbols">
-                  <FloatingCodeSymbols count={36} />
-                </div>
-
-                <section id="contact" className="contact-section" data-aos="fade-up">
-                  <h2>Contact</h2>
-                  <form className="contact-form" onSubmit={handleSubmit}
-                    action="https://formspree.io/f/xrbkkzqn"
-                    method="POST"
-                  >
-                    <label>
-                      Name
-                      <input type="text" name="name" required />
-                    </label>
-                    <label>
-                      Email
-                      <input type="email" name="email" required />
-                    </label>
-                    <label>
-                      Message
-                      <textarea name="message" rows="5" required />
-                    </label>
-                    <button type="submit">Send</button>
-  {formMessage && (
-    <div className="form-message">{formMessage}</div>
-  )}
-                  </form>
-                </section>
-              </main>
-              <button
-  className="back-to-top-link"
-  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
->
-  ↑ Back to Top
-</button>
-<br /><br />
-              <footer ref={footerRef}>
-  <div className="social-links">
-    <a href="https://github.com/JWeeks90038" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-      <FaGithub />
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=61566879270909" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-      <FaFacebook />
-    </a>
-    <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-      <FaInstagram />
-    </a>
-    <a href="https://www.linkedin.com/in/jonas-weeks-447136a4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-      <FaLinkedin />
-    </a>
-    <a href="jonasweeks.dev@gmail.com" aria-label="Email">
-      <FaEnvelope />
-    </a>
-  </div>
-  <p>&copy; {new Date().getFullYear()} Jonas Weeks</p>
-</footer><br></br><br></br>
+            {/* Tech Stack Badges */}
+            <div className="tech-stack-badges">
+              <div className="tech-category">
+                <span className="learning-label">Languages:</span>
+                <span className="tech-badge">JavaScript</span>
+                <span className="tech-badge">TypeScript</span>
+                <span className="tech-badge">HTML</span>
+                <span className="tech-badge">CSS</span>
+                <span className="tech-badge">Solidity</span>
+                <span className="tech-badge">Python</span>
+              </div>
+              
+              <div className="tech-category">
+                <span className="learning-label">Frameworks & Libraries:</span>
+                <span className="tech-badge">React</span>
+                <span className="tech-badge">Next.js</span>
+                <span className="tech-badge">Tailwind CSS</span>
+                <span className="tech-badge">Node.js</span>
+                <span className="tech-badge">Web3</span>
+              </div>
+              
+              <div className="tech-category">
+                <span className="learning-label">Tools & Platforms:</span>
+                <span className="tech-badge">Git</span>
+                <span className="tech-badge">Vercel</span>
+                <span className="tech-badge">VS Code</span>
+                <span className="tech-badge">npm</span>
+              </div>
+              
+              <div className="tech-category">
+                <span className="learning-label">Databases & Services:</span>
+                <span className="tech-badge">Firebase</span>
+                <span className="tech-badge">API Integration</span>
+              </div>
             </div>
-          }
-        />
-        <Route path="/projects" element={<ProjectsPage />} />
-      </Routes>
+
+            <br /><br />
+
+            <Link to="/projects" className="cta-btn">See My Work</Link>
+            <br /><br /><br />
+          </div>
+        </section>
+
+        <main>
+          <div className="code-float-section" data-aos="fade-up">
+            <AnimatedCode />
+          </div>
+          <br /><br /><br />
+          
+          <section id="projects" className="glow-white-section" data-aos="fade-up">
+            <h2>Meet the Developer:</h2>
+            <div className="developer-photo-container">
+              <img
+                src="/jonas-img.png"
+                alt="Jonas Weeks"
+                className="developer-photo"
+              />
+            </div>
+            <div className="about-text">
+              <div>
+                <p>
+                  A self-taught full stack developer with a passion for building creative and impactful web applications at the intersection of traditional web development and emerging technologies. With multiple projects under my belt—including blockchain applications and AI-powered solutions—I thrive on learning by doing and love turning innovative ideas into real, working products. My journey proves that curiosity and determination are the best teachers in tech!
+                </p>
+                <p>
+                  Every project I take on is an opportunity to push my skills further and explore cutting-edge technologies. From designing intuitive user interfaces to architecting robust backend systems, integrating AI APIs for intelligent features, and building decentralized applications on blockchain networks, I enjoy the challenge of bringing all the pieces together into seamless, forward-thinking experiences. My hands-on approach means I'm always experimenting with the latest in Web3, machine learning APIs, and blockchain integration.
+                </p>
+                <p>
+                  I believe that great software is built by those who are willing to learn, adapt, and solve problems creatively—especially in rapidly evolving fields like blockchain and artificial intelligence. My portfolio showcases not just traditional web development, but also my exploration into smart contracts, DeFi protocols, and AI-enhanced applications. I'm excited to continue this journey, tackling new challenges in Web3 development and building applications that leverage the power of both blockchain technology and AI to leave a lasting impact.
+                </p>
+
+                <div className="availability-info">
+  <p><strong>Currently available for:</strong></p>
+  <div className="rate-badges">
+    <div className="rate-badge">
+      <span className="service-type">Web Development</span>
+      <span className="rate-range">$75-$125/hour</span>
+    </div>
+    <div className="rate-badge">
+      <span className="service-type">Blockchain & DApps</span>
+      <span className="rate-range">$100-$150/hour</span>
+    </div>
+    <div className="rate-badge">
+      <span className="service-type">AI Integration</span>
+      <span className="rate-range">$90-$140/hour</span>
+    </div>
+  </div>
+  <p><em>Rates vary based on project complexity and timeline.</em></p>
+</div>
+              </div>
+            </div>
+          </section>
+
+          <div className="floating-code-symbols">
+            <FloatingCodeSymbols count={36} />
+          </div>
+
+          <section id="contact" className="contact-section" data-aos="fade-up">
+            <h2>Contact</h2>
+            <form className="contact-form" onSubmit={handleSubmit}
+              action="https://formspree.io/f/xrbkkzqn"
+              method="POST"
+            >
+              <label>
+                Name
+                <input type="text" name="name" required />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" required />
+              </label>
+              <label>
+                Message
+                <textarea name="message" rows="5" required />
+              </label>
+              <button type="submit">Send</button>
+              {formMessage && (
+                <div className="form-message">{formMessage}</div>
+              )}
+            </form>
+          </section>
+        </main>
+        
+        <button
+          className="back-to-top-link"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          ↑ Back to Top
+        </button>
+        <br /><br />
+        
+        <footer ref={footerRef}>
+          <div className="social-links">
+            <a href="https://github.com/JWeeks90038" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <FaGithub />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61566879270909" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <FaFacebook />
+            </a>
+            <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FaInstagram />
+            </a>
+            <a href="https://www.linkedin.com/in/jonas-weeks-447136a4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <FaLinkedin />
+            </a>
+            <a href="jonasweeks.dev@gmail.com" aria-label="Email">
+              <FaEnvelope />
+            </a>
+          </div>
+          <p>&copy; {new Date().getFullYear()} Jonas Weeks</p>
+        </footer>
+      </div>
+    }
+  />
+  <Route path="/projects" element={<ProjectsPage />} />
+</Routes>
          </div>
         </div>
           </>
