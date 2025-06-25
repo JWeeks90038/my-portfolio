@@ -409,15 +409,15 @@ return (
   <div className="rate-badges">
     <div className="rate-badge">
       <span className="service-type">Web Development</span>
-      <span className="rate-range">$50-$100/hour</span>
+      <span className="rate-range">$30-$75/hour</span>
     </div>
     <div className="rate-badge">
       <span className="service-type">Blockchain & DApps</span>
-      <span className="rate-range">$75-$125/hour</span>
+      <span className="rate-range">$55-$95/hour</span>
     </div>
     <div className="rate-badge">
       <span className="service-type">AI Integration</span>
-      <span className="rate-range">$90-$140/hour</span>
+      <span className="rate-range">$70-$120/hour</span>
     </div>
   </div>
   <p><em>Rates vary based on project complexity and timeline.</em></p>
