@@ -23,7 +23,7 @@ const projects = [
     title: "Dream Mint - Coming Soon",
     year: 2025,
     link: "#",
-    image: "/AI-Task-Manager-Screen-Grab.png",
+    image: "/Dream-Mint-Screen-Grab.png",
     description: "Dream Mint is an innovative decentralized application (DApp) that revolutionizes digital asset creation and NFT minting through AI-powered dream interpretation. Users can input their dreams, which are then transformed into unique digital artwork using advanced AI image generation APIs. The platform combines blockchain technology with artificial intelligence to create personalized, one-of-a-kind NFTs that represent users' subconscious experiences. Built on Ethereum with smart contract functionality for secure minting, trading, and royalty distribution.",
     tech: ["React", "Solidity", "Web3.js", "OpenAI API", "Ethereum", "IPFS", "MetaMask Integration"]
   }
