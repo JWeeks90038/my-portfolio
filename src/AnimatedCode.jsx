@@ -55,8 +55,6 @@ const positions = [
   { top: 150, right: 15 },  // Far right, bottom
 ];
 
-// ...existing code...
-
 function AnimatedCode() {
   const [blocks, setBlocks] = useState([]);
   const blockId = useRef(0);
