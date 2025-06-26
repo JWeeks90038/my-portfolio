@@ -172,6 +172,56 @@ useEffect(() => {
   };
 }, []);
 
+// Add this useEffect after your existing useEffects in App.jsx
+useEffect(() => {
+  const typeWriterElements = document.querySelectorAll('.typewriter-text');
+  
+  const typeWriter = (element, text, speed = 50) => {
+    let index = 0;
+    element.textContent = '';
+    
+    const type = () => {
+      if (index < text.length) {
+        element.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, speed);
+      } else {
+        element.classList.add('typing-complete');
+      }
+    };
+    
+    type();
+  };
+
+  const observerOptions = {
+    threshold: 0.3,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting && !entry.target.classList.contains('typed')) {
+        entry.target.classList.add('typed');
+        const text = entry.target.getAttribute('data-text');
+        // Stagger the typing animation for each testimonial
+        setTimeout(() => {
+          typeWriter(entry.target, text, 30 + Math.random() * 20);
+        }, index * 1000); // 1 second delay between each testimonial
+      }
+    });
+  }, observerOptions);
+
+  typeWriterElements.forEach(element => {
+    observer.observe(element);
+  });
+
+  return () => {
+    typeWriterElements.forEach(element => {
+      observer.unobserve(element);
+    });
+  };
+}, []);
+
 /*useEffect(() => {
   let animationFrame;
   const animate = () => {
@@ -382,49 +432,82 @@ return (
             <AnimatedCode />
           </div>
           <br /><br /><br />
-          
-          <section id="projects" className="glow-white-section" data-aos="fade-up">
-            <h2>Meet the Developer:</h2>
-            <div className="developer-photo-container">
-              <img
-                src="/jonas-img.png"
-                alt="Jonas Weeks"
-                className="developer-photo"
-              />
-            </div>
-            <div className="about-text">
-              <div>
-                <p>
-                  A self-taught full stack developer with a passion for building creative and impactful web applications at the intersection of traditional web development and emerging technologies. With multiple projects under my belt—including blockchain applications and AI-powered solutions—I thrive on learning by doing and love turning innovative ideas into real, working products. My journey proves that curiosity and determination are the best teachers in tech!
-                </p>
-                <p>
-                  Every project I take on is an opportunity to push my skills further and explore cutting-edge technologies. From designing intuitive user interfaces to architecting robust backend systems, integrating AI APIs for intelligent features, and building decentralized applications on blockchain networks, I enjoy the challenge of bringing all the pieces together into seamless, forward-thinking experiences. My hands-on approach means I'm always experimenting with the latest in Web3, machine learning APIs, and blockchain integration.
-                </p>
-                <p>
-                  I believe that great software is built by those who are willing to learn, adapt, and solve problems creatively—especially in rapidly evolving fields like blockchain and artificial intelligence. My portfolio showcases not just traditional web development, but also my exploration into smart contracts, DeFi protocols, and AI-enhanced applications. I'm excited to continue this journey, tackling new challenges in Web3 development and building applications that leverage the power of both blockchain technology and AI to leave a lasting impact.
-                </p>
 
-                <div className="availability-info">
-  <p><strong>Currently available for:</strong></p>
-  <div className="rate-badges">
-    <div className="rate-badge">
-      <span className="service-type">Web Development</span>
-      <span className="rate-range">$30-$75/hour</span>
-    </div>
-    <div className="rate-badge">
-      <span className="service-type">Blockchain & DApps</span>
-      <span className="rate-range">$55-$95/hour</span>
-    </div>
-    <div className="rate-badge">
-      <span className="service-type">AI Integration</span>
-      <span className="rate-range">$70-$120/hour</span>
-    </div>
+<section id="projects" className="glow-white-section" data-aos="fade-up">
+  <h2>Meet the Developer:</h2>
+  <div className="developer-photo-container">
+    <img
+      src="/jonas-img.png"
+      alt="Jonas Weeks"
+      className="developer-photo"
+    />
   </div>
-  <p><em>Rates vary based on project complexity and timeline.</em></p>
-</div>
-              </div>
+  <div className="about-text">
+    <div>
+      <p>
+        I am a self-taught full stack developer with a passion for building creative and impactful web applications at the intersection of traditional web development and emerging technologies. With multiple projects under my belt—including blockchain applications and AI-powered solutions—I thrive on learning by doing and love turning innovative ideas into real, working products. My journey proves that curiosity and determination are the best teachers in tech!
+      </p>
+      <p>
+        Every project I take on is an opportunity to push my skills further and explore cutting-edge technologies. From designing intuitive user interfaces to architecting robust backend systems, integrating AI APIs for intelligent features, and building decentralized applications on blockchain networks, I enjoy the challenge of bringing all the pieces together into seamless, forward-thinking experiences. My hands-on approach means I'm always experimenting with the latest in Web3, machine learning APIs, and blockchain integration.
+      </p>
+      <p>
+        I believe that great software is built by those who are willing to learn, adapt, and solve problems creatively—especially in rapidly evolving fields like blockchain and artificial intelligence. My portfolio showcases not just traditional web development, but also my exploration into smart contracts, DeFi protocols, and AI-enhanced applications. I'm excited to continue this journey, tackling new challenges in Web3 development and building applications that leverage the power of both blockchain technology and AI to leave a lasting impact.
+      </p>
+
+      <div className="availability-info">
+        <p><strong>Currently available for:</strong></p>
+        <div className="rate-badges">
+          <div className="rate-badge">
+            <span className="service-type">Web Development</span>
+            <span className="rate-range">$30-$75/hour</span>
+          </div>
+          <div className="rate-badge">
+            <span className="service-type">Blockchain & DApps</span>
+            <span className="rate-range">$55-$95/hour</span>
+          </div>
+          <div className="rate-badge">
+            <span className="service-type">AI Integration</span>
+            <span className="rate-range">$70-$120/hour</span>
+          </div>
+        </div>
+        <p><em>Rates vary based on project complexity and timeline.</em></p>
+      </div>
+
+      <div className="testimonials-section" data-aos="fade-up">
+        <h3><strong>What Clients Are Saying:</strong></h3>
+        <div className="testimonials-container">
+          <div className="testimonial">
+            <div className="testimonial-content">
+              <span className="typewriter-text" data-text='“Working with this developer on the Mindful Gateway Therapy website was an incredibly smooth and professional experience. From the very beginning, he took the time to understand the needs of my practice and translated them into a site that feels calm, welcoming, and aligned with my brand. He was attentive to detail, highly responsive during the entire process — especially when last-minute updates were needed — and made sure the site was fast, mobile-friendly, and easy for me to manage. I’ve already received positive feedback from clients about how user-friendly and visually appealing the site is. I’m so pleased with the result and would absolutely recommend his work to other small business owners or therapists looking for a reliable developer.”'></span>
             </div>
-          </section>
+            <div className="testimonial-author">
+              <span className="client-name">— Karina W., LPCC & Founder</span>
+              <span className="client-project">Mindful Gateway Therapy</span>
+            </div>
+          </div>
+          
+          <div className="testimonial">
+            <div className="testimonial-content">
+              <span className="typewriter-text" data-text='“Building Grubana has been one of the most challenging and rewarding journeys of my career. I created the platform from the ground up to solve a real problem I saw in the food truck community — the disconnect between incredible local food vendors and the people trying to find them.
+
+
+
+As a full stack developer and founder, I architected every part of Grubana — from the real-time map and ping system to the analytics dashboard and drop claiming system — with scalability, speed, and user experience in mind. But more than just code, Grubana represents my belief that technology should empower small business owners and create vibrant communities.
+
+
+
+I’m proud of what Grubana has become, and even more excited about where it’s going. This is just the beginning.”'></span>
+            </div>
+            <div className="testimonial-author">
+              <span className="client-name">— Jonas W., Founder</span>
+              <span className="client-project">Grubana Platform</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div> 
+</section>
 
           <div className="floating-code-symbols">
             <FloatingCodeSymbols count={36} />

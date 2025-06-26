@@ -1077,6 +1077,121 @@ html, body {
   color: #94a3b8;
 }
 
+/* Testimonials Section */
+.testimonials-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: rgba(24, 24, 27, 0.9);
+  border-left: 3px solid #38bdf8;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px 0 #38bdf822;
+  mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.testimonials-section h3 {
+  font-size: 1.7rem;
+  color: #38bdf8;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+  text-shadow: none;
+}
+
+.testimonials-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.testimonial {
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.testimonial:hover {
+  background: rgba(56, 189, 248, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.1);
+}
+
+.testimonial-content {
+  margin-bottom: 1rem;
+  line-height: 0.4;
+  text-shadow: none;
+}
+
+.typewriter-text {
+  color: #f1f5f9;
+  font-size: 1rem;
+  line-height: 0.7;
+  font-style: italic;
+  display: inline;
+}
+
+.typewriter-text::after {
+  content: '|';
+  animation: blink 1s infinite;
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+.typewriter-text.typing-complete::after {
+  display: none;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.client-name {
+  color: #38bdf8;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-shadow: none;
+}
+
+.client-project {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-style: italic;
+  text-shadow: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .testimonials-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+  }
+  
+  .testimonials-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .testimonial {
+    padding: 1.2rem;
+  }
+  
+  .typewriter-text {
+    font-size: 0.9rem;
+  }
+}
+
 .contact-intro {
   text-align: center;
   margin-bottom: 2rem;
