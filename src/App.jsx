@@ -478,10 +478,10 @@ return (
         <div className="testimonials-container">
           <div className="testimonial">
             <div className="testimonial-content">
-              <span className="typewriter-text" data-text='“Working with this developer on the Mindful Gateway Therapy website was an incredibly smooth and professional experience. From the very beginning, he took the time to understand the needs of my practice and translated them into a site that feels calm, welcoming, and aligned with my brand. He was attentive to detail, highly responsive during the entire process — especially when last-minute updates were needed — and made sure the site was fast, mobile-friendly, and easy for me to manage. I’ve already received positive feedback from clients about how user-friendly and visually appealing the site is. I’m so pleased with the result and would absolutely recommend his work to other small business owners or therapists looking for a reliable developer.”'></span>
+              <span className="typewriter-text" data-text='“Working with Jonas to build our company website was an incredibly smooth and professional experience. From the very beginning, he took the time to understand the needs of my practice and translated them into a site that feels calm, welcoming, and aligned with my brand. He was attentive to detail, highly responsive during the entire process — especially when last-minute updates were needed — and made sure the site was fast, mobile-friendly, and easy for me to manage. I’ve already received positive feedback from clients about how user-friendly and visually appealing the site is. I’m so pleased with the result and would absolutely recommend his work to other small business owners or therapists looking for a reliable developer.”'></span>
             </div>
             <div className="testimonial-author">
-              <span className="client-name">— Karina W., LPCC & Founder</span>
+              <span className="client-name">— Karina, LPCC & Founder</span>
               <span className="client-project">Mindful Gateway Therapy</span>
             </div>
           </div>
@@ -499,7 +499,7 @@ As a full stack developer and founder, I architected every part of Grubana — f
 I’m proud of what Grubana has become, and even more excited about where it’s going. This is just the beginning.”'></span>
             </div>
             <div className="testimonial-author">
-              <span className="client-name">— Jonas W., Founder</span>
+              <span className="client-name">— Jonas, Developer & Founder</span>
               <span className="client-project">Grubana Platform</span>
             </div>
           </div>
