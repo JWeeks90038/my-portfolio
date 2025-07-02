@@ -397,7 +397,7 @@ return (
             </div>
             
             <p>Full Stack Web Developer | Creative Coder | Problem Solver</p>
-            <br /><br /><br />
+            <br /><br /><br /><br />
 
             {/* Tech Stack Badges */}
             <div className="tech-stack-badges">
@@ -409,7 +409,7 @@ return (
                 <span className="tech-badge">CSS</span>
                 <span className="tech-badge">Solidity</span>
                 <span className="tech-badge">Python</span>
-              </div>
+              </div><br /><br />
               
               <div className="tech-category">
                 <span className="learning-label">Frameworks & Libraries:</span>
@@ -418,7 +418,7 @@ return (
                 <span className="tech-badge">Tailwind CSS</span>
                 <span className="tech-badge">Node.js</span>
                 <span className="tech-badge">Web3</span>
-              </div>
+              </div><br /><br />
               
               <div className="tech-category">
                 <span className="learning-label">Tools & Platforms:</span>
@@ -426,7 +426,7 @@ return (
                 <span className="tech-badge">Vercel</span>
                 <span className="tech-badge">VS Code</span>
                 <span className="tech-badge">npm</span>
-              </div>
+              </div><br /><br />
               
               <div className="tech-category">
                 <span className="learning-label">Databases & Services:</span>
@@ -435,10 +435,10 @@ return (
               </div>
             </div>
 
-            <br /><br />
+            <br /><br /><br /><br />
 
             <Link to="/projects" className="cta-btn">See My Work</Link>
-            <br /><br /><br />
+            <br /><br /><br /><br /><br />
           </div>
         </section>
 
