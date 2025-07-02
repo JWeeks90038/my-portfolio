@@ -44,16 +44,31 @@ export default function ProjectsPage() {
     setCurrentProject(index);
   };
 
-  return (
-    <>
-      <div className="name-watermark">
-        <span>Jonas Weeks</span>
+ return (
+  <>
+    <div className="name-watermark">
+      <span>Jonas Weeks</span>
+    </div>
+    
+    <section className="projects-page">
+      {/* Add video background */}
+      <div className="projects-video-background">
+        <video 
+          className="projects-video-bg"
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          poster="/video-poster.jpg"
+        >
+          <source src="/cinematic_blue_numbers.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
       
-      <section className="projects-page">
-        <h2>My Projects</h2>
-        
-        <div className="project-carousel">
+      <h2>My Projects</h2>
+      
+      <div className="project-carousel">
           {/* Move controls to the top */}
           <div className="carousel-controls">
             <button onClick={prevProject} className="carousel-btn">
