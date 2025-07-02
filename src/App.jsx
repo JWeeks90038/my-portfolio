@@ -381,6 +381,21 @@ return (
         
         <section className="hero-section" data-aos="fade-up">
           <div className="glass-card">
+            {/* Add video background behind tech stack */}
+            <div className="hero-video-background">
+              <video 
+                className="hero-video-bg"
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+                poster="/video-poster.jpg"
+              >
+                <source src="/matrix_3d_blue.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            
             <p>Full Stack Web Developer | Creative Coder | Problem Solver</p>
             <br /><br /><br />
 
@@ -428,86 +443,75 @@ return (
         </section>
 
         <main>
-          <div className="code-float-section" data-aos="fade-up">
-            <AnimatedCode />
-          </div>
-          <br /><br /><br />
+          <br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-<section id="projects" className="glow-white-section" data-aos="fade-up">
-  <h2>Meet the Developer:</h2>
-  <div className="developer-photo-container">
-    <img
-      src="/jonas-img.png"
-      alt="Jonas Weeks"
-      className="developer-photo"
-    />
-  </div>
-  <div className="about-text">
-    <div>
-      <p>
-        I am a self-taught full stack developer with a passion for building creative and impactful web applications at the intersection of traditional web development and emerging technologies. With multiple projects under my belt—including blockchain applications and AI-powered solutions—I thrive on learning by doing and love turning innovative ideas into real, working products. My journey proves that curiosity and determination are the best teachers in tech!
-      </p>
-      <p>
-        Every project I take on is an opportunity to push my skills further and explore cutting-edge technologies. From designing intuitive user interfaces to architecting robust backend systems, integrating AI APIs for intelligent features, and building decentralized applications on blockchain networks, I enjoy the challenge of bringing all the pieces together into seamless, forward-thinking experiences. My hands-on approach means I'm always experimenting with the latest in Web3, machine learning APIs, and blockchain integration.
-      </p>
-      <p>
-        I believe that great software is built by those who are willing to learn, adapt, and solve problems creatively—especially in rapidly evolving fields like blockchain and artificial intelligence. My portfolio showcases not just traditional web development, but also my exploration into smart contracts, DeFi protocols, and AI-enhanced applications. I'm excited to continue this journey, tackling new challenges in Web3 development and building applications that leverage the power of both blockchain technology and AI to leave a lasting impact.
-      </p>
-
-      <div className="availability-info">
-        <p><strong>Currently available for:</strong></p>
-        <div className="rate-badges">
-          <div className="rate-badge">
-            <span className="service-type">Web Development</span>
-            <span className="rate-range">$30-$75/hour</span>
-          </div>
-          <div className="rate-badge">
-            <span className="service-type">Blockchain & DApps</span>
-            <span className="rate-range">$55-$95/hour</span>
-          </div>
-          <div className="rate-badge">
-            <span className="service-type">AI Integration</span>
-            <span className="rate-range">$70-$120/hour</span>
-          </div>
-        </div>
-        <p><em>Rates vary based on project complexity and timeline.</em></p>
-      </div>
-
-      <div className="testimonials-section" data-aos="fade-up">
-        <h3><strong>What Clients Are Saying:</strong></h3>
-        <div className="testimonials-container">
-          <div className="testimonial">
-            <div className="testimonial-content">
-              <span className="typewriter-text" data-text='“Working with Jonas to build our company website was an incredibly smooth and professional experience. From the very beginning, he took the time to understand the needs of my practice and translated them into a site that feels calm, welcoming, and aligned with my brand. He was attentive to detail, highly responsive during the entire process — especially when last-minute updates were needed — and made sure the site was fast, mobile-friendly, and easy for me to manage. I’ve already received positive feedback from clients about how user-friendly and visually appealing the site is. I’m so pleased with the result and would absolutely recommend his work to other small business owners or therapists looking for a reliable developer.”'></span>
+          <section id="projects" className="glow-white-section" data-aos="fade-up">
+            <h2>Meet the Developer:</h2>
+            <div className="developer-photo-container">
+              <img
+                src="/jonas-img.png"
+                alt="Jonas Weeks"
+                className="developer-photo"
+              />
             </div>
-            <div className="testimonial-author">
-              <span className="client-name">— Karina, LPCC & Founder</span>
-              <span className="client-project">Mindful Gateway Therapy</span>
-            </div>
-          </div>
-          
-          <div className="testimonial">
-            <div className="testimonial-content">
-              <span className="typewriter-text" data-text='“Building Grubana has been one of the most challenging and rewarding journeys of my career. I created the platform from the ground up to solve a real problem I saw in the food truck community — the disconnect between incredible local food vendors and the people trying to find them.
+            <div className="about-text">
+              <div>
+                <p>
+                  I am a self-taught full stack developer with a passion for building creative and impactful websites & web applications at the intersection of traditional web development and emerging technologies. With multiple projects under my belt—including blockchain applications and AI-powered solutions—I thrive on learning by doing and love turning innovative ideas into real, working products. My journey proves that curiosity and determination are the best teachers in tech!
+                </p>
+                <p>
+                  Every project I take on is an opportunity to push my skills further and explore cutting-edge technologies. From designing intuitive user interfaces to architecting robust backend systems, integrating AI APIs for intelligent features, and building decentralized applications on blockchain networks, I enjoy the challenge of bringing all the pieces together into seamless, forward-thinking experiences. My hands-on approach means I'm always experimenting with the latest in Web3, machine learning APIs, and blockchain integration.
+                </p>
+                <p>
+                  I believe that great software is built by those who are willing to learn, adapt, and solve problems creatively—especially in rapidly evolving fields like blockchain and artificial intelligence. My portfolio showcases not just traditional web development, but also my exploration into smart contracts, DeFi protocols, and AI-enhanced applications. I'm excited to continue this journey, tackling new challenges in Web3 development and building applications that leverage the power of both blockchain technology and AI to leave a lasting impact.
+                </p>
 
+                <div className="availability-info">
+                  <p><strong>Currently available for:</strong></p>
+                  <div className="rate-badges">
+                    <div className="rate-badge">
+                      <span className="service-type">Web Development</span>
+                      <span className="rate-range">$30-$75/hour</span>
+                    </div>
+                    <div className="rate-badge">
+                      <span className="service-type">Blockchain & DApps</span>
+                      <span className="rate-range">$55-$95/hour</span>
+                    </div>
+                    <div className="rate-badge">
+                      <span className="service-type">AI Integration</span>
+                      <span className="rate-range">$70-$120/hour</span>
+                    </div>
+                  </div>
+                  <p><em>Rates vary based on project complexity and timeline.</em></p>
+                </div>
 
-
-As a full stack developer and founder, I architected every part of Grubana — from the real-time map and ping system to the analytics dashboard and drop claiming system — with scalability, speed, and user experience in mind. But more than just code, Grubana represents my belief that technology should empower small business owners and create vibrant communities.
-
-
-
-I’m proud of what Grubana has become, and even more excited about where it’s going. This is just the beginning.”'></span>
-            </div>
-            <div className="testimonial-author">
-              <span className="client-name">— Jonas, Developer & Founder</span>
-              <span className="client-project">Grubana Platform</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> 
-  </div> 
-</section>
+                <div className="testimonials-section" data-aos="fade-up">
+                  <h3>What Clients Are Saying:</h3>
+                  <div className="testimonials-container">
+                    <div className="testimonial">
+                      <div className="testimonial-content">
+                        <span className="typewriter-text" data-text='"Working with Jonas to build our company website was an incredibly smooth and professional experience. From the very beginning, he took the time to understand the needs of my practice and translated them into a site that feels calm, welcoming, and aligned with my brand. He was attentive to detail, highly responsive during the entire process — especially when last-minute updates were needed — and made sure the site was fast, mobile-friendly, and easy for me to manage. I have already received positive feedback from clients about how user-friendly and visually appealing the site is. I am so pleased with the result and would absolutely recommend his work to other small business owners or therapists looking for a reliable developer."'></span>
+                      </div>
+                      <div className="testimonial-author">
+                        <span className="client-name">— Karina, LPCC & Founder</span>
+                        <span className="client-project">Mindful Gateway Therapy</span>
+                      </div>
+                    </div>
+                    
+                    <div className="testimonial">
+                      <div className="testimonial-content">
+                        <span className="typewriter-text" data-text='"Building Grubana has been one of the most challenging and rewarding journeys of my career. I created the platform from the ground up to solve a real problem I saw in the food truck community — the disconnect between incredible local food vendors and the people trying to find them. As a full stack developer and founder, I architected every part of Grubana — from the real-time map and ping system to the analytics dashboard and drop claiming system — with scalability, speed, and user experience in mind. But more than just code, Grubana represents my belief that technology should empower small business owners and create vibrant communities. I am proud of what Grubana has become, and even more excited about where it is going. This is just the beginning."'></span>
+                      </div>
+                      <div className="testimonial-author">
+                        <span className="client-name">— Jonas, Developer & Founder</span>
+                        <span className="client-project">Grubana Platform</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div> 
+          </section>
 
           <div className="floating-code-symbols">
             <FloatingCodeSymbols count={36} />
