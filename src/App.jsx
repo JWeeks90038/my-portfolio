@@ -397,7 +397,7 @@ return (
             </div>
             
             <p>Full Stack Web Developer | Creative Coder | Problem Solver</p>
-            <br /><br /><br /><br />
+            <br /><br /><br />
 
             {/* Tech Stack Badges */}
             <div className="tech-stack-badges">
@@ -409,7 +409,7 @@ return (
                 <span className="tech-badge">CSS</span>
                 <span className="tech-badge">Solidity</span>
                 <span className="tech-badge">Python</span>
-              </div><br /><br />
+              </div>
               
               <div className="tech-category">
                 <span className="learning-label">Frameworks & Libraries:</span>
@@ -418,7 +418,7 @@ return (
                 <span className="tech-badge">Tailwind CSS</span>
                 <span className="tech-badge">Node.js</span>
                 <span className="tech-badge">Web3</span>
-              </div><br /><br />
+              </div>
               
               <div className="tech-category">
                 <span className="learning-label">Tools & Platforms:</span>
@@ -426,7 +426,7 @@ return (
                 <span className="tech-badge">Vercel</span>
                 <span className="tech-badge">VS Code</span>
                 <span className="tech-badge">npm</span>
-              </div><br /><br />
+              </div>
               
               <div className="tech-category">
                 <span className="learning-label">Databases & Services:</span>
@@ -435,10 +435,10 @@ return (
               </div>
             </div>
 
-            <br /><br /><br /><br />
+            <br /><br />
 
             <Link to="/projects" className="cta-btn">See My Work</Link>
-            <br /><br /><br /><br /><br />
+            <br /><br /><br />
           </div>
         </section>
 
@@ -457,7 +457,7 @@ return (
             <div className="about-text">
               <div>
                 <p>
-                  I am a self-taught full stack developer with a passion for building creative and impactful websites & web applications at the intersection of traditional web development and emerging technologies. With multiple projects under my belt—including blockchain applications and AI-powered solutions—I thrive on learning by doing and love turning innovative ideas into real, working products. My journey proves that curiosity and determination are the best teachers in tech!
+                  I am a self-taught full stack developer with a passion for building creative and impactful websites & applications at the intersection of traditional web development and emerging technologies. With multiple projects under my belt—including blockchain applications and AI-powered solutions—I thrive on learning by doing and love turning innovative ideas into real, working products. My journey proves that curiosity and determination are the best teachers in tech!
                 </p>
                 <p>
                   Every project I take on is an opportunity to push my skills further and explore cutting-edge technologies. From designing intuitive user interfaces to architecting robust backend systems, integrating AI APIs for intelligent features, and building decentralized applications on blockchain networks, I enjoy the challenge of bringing all the pieces together into seamless, forward-thinking experiences. My hands-on approach means I'm always experimenting with the latest in Web3, machine learning APIs, and blockchain integration.
