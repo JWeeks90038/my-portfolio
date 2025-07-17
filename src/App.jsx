@@ -456,15 +456,15 @@ return (
             </div>
             <div className="about-text">
               <div>
-                <p>
-                  I am a self-taught full stack developer with a passion for building creative and impactful websites & applications at the intersection of traditional web development and emerging technologies. With multiple projects under my belt—including blockchain applications and AI-powered solutions—I thrive on learning by doing and love turning innovative ideas into real, working products. My journey proves that curiosity and determination are the best teachers in tech!
-                </p>
-                <p>
-                  Every project I take on is an opportunity to push my skills further and explore cutting-edge technologies. From designing intuitive user interfaces to architecting robust backend systems, integrating AI APIs for intelligent features, and building decentralized applications on blockchain networks, I enjoy the challenge of bringing all the pieces together into seamless, forward-thinking experiences. My hands-on approach means I'm always experimenting with the latest in Web3, machine learning APIs, and blockchain integration.
-                </p>
-                <p>
-                  I believe that great software is built by those who are willing to learn, adapt, and solve problems creatively—especially in rapidly evolving fields like blockchain and artificial intelligence. My portfolio showcases not just traditional web development, but also my exploration into smart contracts, DeFi protocols, and AI-enhanced applications. I'm excited to continue this journey, tackling new challenges in Web3 development and building applications that leverage the power of both blockchain technology and AI to leave a lasting impact.
-                </p>
+               <p>
+  I am a full stack developer who thrives on building creative, impactful websites, applications, and AI automation tools. In a world where technology and artificial intelligence are evolving at breakneck speed, I believe that embracing change and leveraging the latest AI tools is essential—not just for innovation, but for staying relevant. My portfolio spans projects from blockchain applications to AI-powered solutions, each one a testament to my drive to adapt, learn, and turn new ideas into real products.
+</p>
+<p>
+  Every project is an opportunity to push boundaries and explore what’s possible with modern technology. Whether I’m designing intuitive user interfaces, architecting robust backend systems, integrating AI APIs for intelligent features, or building custom automation workflows, I approach each challenge with a mindset of continuous learning and adaptation. My hands-on process means I’m always experimenting with the latest in Web3, machine learning, and automation—because in today’s world, standing still is not an option.
+</p>
+<p>
+  I believe that great software is built by those who are willing to evolve, adapt, and solve problems creatively—especially as AI and emerging technologies reshape our industry. My portfolio reflects not only my foundation in traditional web development, but also my commitment to exploring smart contracts, DeFi protocols, and AI-driven automation. I’m excited to keep moving forward, building solutions that harness the power of both blockchain and AI to meet the demands of our rapidly changing world.
+</p>
 
                 <div className="availability-info">
                   <p><strong>Currently available for:</strong></p>
