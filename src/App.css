@@ -1,3 +1,141 @@
+.splash-intro-name.glitch-out {
+  animation:
+    nameGlitchOut 0.7s steps(18, end) forwards,
+    nameGlitchShadow 0.7s linear forwards;
+  opacity: 0.7;
+  filter: brightness(0.6) blur(1px);
+}
+
+@keyframes nameGlitchOut {
+  0%   { opacity: 1; filter: brightness(1) blur(0); }
+  6%   { opacity: 0.5; filter: brightness(0.3) blur(2px); }
+  12%  { opacity: 1; filter: brightness(1.3) blur(0); }
+  18%  { opacity: 0.3; filter: brightness(0.2) blur(2.5px); }
+  24%  { opacity: 1; filter: brightness(1.5) blur(0); }
+  30%  { opacity: 0.7; filter: brightness(0.6) blur(1.5px); }
+  36%  { opacity: 1; filter: brightness(1.2) blur(0); }
+  42%  { opacity: 0.6; filter: brightness(0.4) blur(2px); }
+  48%  { opacity: 1; filter: brightness(1.4) blur(0); }
+  54%  { opacity: 0.8; filter: brightness(0.7) blur(1px); }
+  60%  { opacity: 1; filter: brightness(1.1) blur(0); }
+  66%  { opacity: 0.9; filter: brightness(0.8) blur(1px); }
+  72%  { opacity: 1; filter: brightness(1.2) blur(0); }
+  78%  { opacity: 0.7; filter: brightness(0.5) blur(2px); }
+  84%  { opacity: 1; filter: brightness(1.3) blur(0); }
+  90%  { opacity: 0.95; filter: brightness(1.1) blur(0); }
+  100% { opacity: 0; filter: brightness(2) blur(8px); }
+}
+
+@keyframes nameGlitchShadow {
+  0%, 100% { }
+  10%, 30%, 50%, 70%, 90% {
+    text-shadow: 2px 0 #38f87a, -2px 0 #2563eb, 0 2px #38bdf8, 0 -2px #38f87a;
+  }
+  20%, 40%, 60%, 80% {
+    text-shadow: -2px 0 #38f87a, 2px 0 #2563eb, 0 -2px #38bdf8, 0 2px #38f87a;
+  }
+}
+/* Splash Intro Overlay Styles */
+.splash-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #18181b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s cubic-bezier(.77,0,.18,1), transform 0.7s cubic-bezier(.77,0,.18,1);
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+    mask-image: linear-gradient(
+    to top,
+    transparent 0%,
+    black 2%,
+    black 100%
+  );
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.splash-intro-overlay.wipe-up {
+  animation: wipeUp 0.6s cubic-bezier(0.7,0.2,0.8,1) forwards;
+  opacity: 1 !important;
+  pointer-events: none;
+}
+
+@keyframes wipeUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+
+.splash-intro-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* If both wipe-up and fade-out are present, only wipe-up applies */
+.splash-intro-overlay.wipe-up,
+.splash-intro-overlay.wipe-up.fade-out {
+  animation: wipeUp 0.6s cubic-bezier(0.7,0.2,0.8,1) forwards;
+  opacity: 1 !important;
+  pointer-events: none;
+}
+
+/* If both wipe-up and fade-out are present, only wipe-up applies */
+.splash-intro-overlay.wipe-up.fade-out {
+  animation: wipeUp 0.6s cubic-bezier(0.7,0.2,0.8,1) forwards;
+  opacity: 1 !important;
+}
+
+.splash-intro-name {
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: #38bdf8;
+  letter-spacing: 0.08em;
+  text-shadow:
+    0 0 12px #38bdf8,
+    0 0 32px #38f87a,
+    0 0 8px #fff;
+  animation: nameGlowFizzle 1.8s cubic-bezier(.77,0,.18,1) 0.2s 1 both;
+}
+
+@keyframes nameGlowFizzle {
+  0% {
+    text-shadow:
+      0 0 24px #38bdf8,
+      0 0 48px #38f87a,
+      0 0 8px #fff;
+    color: #38bdf8;
+  }
+  70% {
+    text-shadow:
+      0 0 16px #38bdf8,
+      0 0 32px #38f87a,
+      0 0 4px #fff;
+    color: #38bdf8;
+  }
+  100% {
+    text-shadow:
+      0 2px 8px #b6e3ff44,
+      0 1px 0 #fff,
+      0 0.5px 0 #b6e3ff;
+    color: #e0e6ed;
+  }
+}
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
 
 *, *::before, *::after {
@@ -631,18 +769,6 @@ html, body {
   border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .projects-video-bg {
-    opacity: 0.2; /* Even more subtle on mobile */
-  }
-  
-  .projects-page {
-    margin: 1rem;
-    padding: 2rem 1rem;
-  }
-}
-
 .projects-page h2 {
  font-size: 3.1rem;
  color: #fff;
@@ -785,7 +911,10 @@ html, body {
 }
 
 .hero-section {
-  margin-bottom: 1rem; /* or any value you prefer */
+  margin-bottom: 5rem; /* or any value you prefer */
+  min-height: 90vh;      /* Increase this value for a taller hero section */
+  padding-top: 6rem;     /* Optional: move content further down */
+  padding-bottom: 4rem;  /* Optional: add space at the bottom */
 }
 
 .glow-white-section {
