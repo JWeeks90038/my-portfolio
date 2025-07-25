@@ -14,6 +14,9 @@ import 'aos/dist/aos.css';
 function App() {
   //const [scrollY, setScrollY] = useState(window.scrollY);
   const [time, setTime] = useState(0);
+  const [showSplash, setShowSplash] = useState(true);
+  const [splashFading, setSplashFading] = useState(false);
+  const [splashWipeUp, setSplashWipeUp] = useState(false);
   const [gradientT, setGradientT] = useState(0);
   const [svgWidth, setSvgWidth] = useState(window.innerWidth);
   const [docHeight, setDocHeight] = useState(document.documentElement.scrollHeight);
@@ -21,9 +24,7 @@ function App() {
   const [footerRect, setFooterRect] = useState({ top: 0, height: 80 });
   //const [animatedOrbY, setAnimatedOrbY] = useState(0);
   const [fadeIn, setFadeIn] = useState(false);
-  const [showSplash, setShowSplash] = useState(true);
   const [showGlow, setShowGlow] = useState(false);
-  const [splashFading, setSplashFading] = useState(false);
   const [splashBgFaded, setSplashBgFaded] = useState(false);
   const [formMessage, setFormMessage] = useState("");
 
@@ -110,11 +111,20 @@ const handleSubmit = async (e) => {
   }
 };
 
+// Splash intro effect
 useEffect(() => {
   if (showSplash) {
-    setSplashBgFaded(false);
-    const bgTimer = setTimeout(() => setSplashBgFaded(true), 200); // fade after 0.2s
-    return () => clearTimeout(bgTimer);
+    // Start glitch-out after 1.2s
+    const glitchTimer = setTimeout(() => setSplashFading(true), 1200);
+    // Start wipe-up after 1.7s
+    const wipeUpTimer = setTimeout(() => setSplashWipeUp(true), 1700);
+    // Remove splash after wipe-up animation
+    const removeTimer = setTimeout(() => setShowSplash(false), 2300);
+    return () => {
+      clearTimeout(glitchTimer);
+      clearTimeout(wipeUpTimer);
+      clearTimeout(removeTimer);
+    };
   }
 }, [showSplash]);
 
@@ -332,28 +342,22 @@ useEffect(() => {
   scrollableHeight: contentHeight - window.innerHeight,
   progress
 });*/
-return (
-  <>
-    <div className="atmospheric-gradient-bg" aria-hidden="true"></div>
-   
-      <>
+  return (
+    <div>
+      {/* Splash Intro Overlay */}
+      {showSplash && (
+        <div className={`splash-intro-overlay${splashWipeUp ? ' wipe-up' : ''}`}>
+          <span className={`splash-intro-name${splashFading ? ' glitch-out' : ''}`}>Jonas Weeks</span>
+        </div>
+      )}
+      <div className="atmospheric-gradient-bg" aria-hidden="true"></div>
       <a id="top"></a>
-  <ScrollToTop />
-  <div className={`site-fade-in${fadeIn ? ' visible' : ''}`}>
-    <div className="atmospheric-gradient-bg" aria-hidden="true"></div>
-    {/* Main site content, only after splash */}
-    <div className="hazy-bg" aria-hidden="true"></div>
-    <div className="hazy-blob blob1"></div>
-    <div className="hazy-blob blob2"></div>
-    <div className="hazy-blob blob3"></div>
- 
-      
-    <div className="site-content" ref={contentRef}>
+      <ScrollToTop />
       <nav className="glow-navbar">
-          <Link to="/" className="nav-orb">
-    <span className="orb-dot"></span>
-    <span className="orb-label">Home</span>
-    </Link>
+        <Link to="/" className="nav-orb">
+          <span className="orb-dot"></span>
+          <span className="orb-label">Home</span>
+        </Link>
         <Link to="/projects" className="nav-orb">
           <span className="orb-dot"></span>
           <span className="orb-label">Projects</span>
@@ -367,220 +371,205 @@ return (
           <span className="orb-label">Contact</span>
         </a>
       </nav>
-      <br />
-
-<Routes>
-  <Route
-    path="/"
-    element={
-      <div>
-        {/* Hero Section */}
-        <div className="name-watermark">
-          <span>Jonas Weeks</span>
+      <div className={`site-fade-in${fadeIn ? ' visible' : ''}`}> 
+        <div className="atmospheric-gradient-bg" aria-hidden="true"></div>
+        {/* Main site content, only after splash */}
+        <div className="hazy-bg" aria-hidden="true"></div>
+        <div className="hazy-blob blob1"></div>
+        <div className="hazy-blob blob2"></div>
+        <div className="hazy-blob blob3"></div>
+        <div className="site-content" ref={contentRef}>
+          <Routes>
+            <Route path="/" element={
+              <>
+                {/* Hero Section */}
+                <div className="name-watermark">
+                  <span>Jonas Weeks</span>
+                </div>
+                <section className="hero-section" data-aos="fade-up">
+                  <div className="glass-card">
+                    <div className="hero-video-background">
+                      <video 
+                        className="hero-video-bg"
+                        autoPlay 
+                        muted 
+                        loop 
+                        playsInline
+                        poster="/video-poster.jpg"
+                      >
+                        <source src="/matrix_3d_blue.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                    <p>Full Stack Web Developer | Creative Coder | Problem Solver</p>
+                    <br /><br /><br />
+                    {/* Tech Stack Badges */}
+                    <div className="tech-stack-badges">
+                      <div className="tech-category">
+                        <span className="learning-label">Languages:</span>
+                        <span className="tech-badge">JavaScript</span>
+                        <span className="tech-badge">TypeScript</span>
+                        <span className="tech-badge">HTML</span>
+                        <span className="tech-badge">CSS</span>
+                        <span className="tech-badge">Solidity</span>
+                        <span className="tech-badge">Python</span>
+                      </div>
+                      <div className="tech-category">
+                        <span className="learning-label">Frameworks & Libraries:</span>
+                        <span className="tech-badge">React</span>
+                        <span className="tech-badge">Next.js</span>
+                        <span className="tech-badge">Tailwind CSS</span>
+                        <span className="tech-badge">Node.js</span>
+                        <span className="tech-badge">Web3</span>
+                      </div>
+                      <div className="tech-category">
+                        <span className="learning-label">Tools & Platforms:</span>
+                        <span className="tech-badge">Git</span>
+                        <span className="tech-badge">Vercel</span>
+                        <span className="tech-badge">VS Code</span>
+                        <span className="tech-badge">npm</span>
+                      </div>
+                      <div className="tech-category">
+                        <span className="learning-label">Databases & Services:</span>
+                        <span className="tech-badge">Firebase</span>
+                        <span className="tech-badge">API Integration</span>
+                      </div>
+                    </div>
+                    <br /><br />
+                    <Link to="/projects" className="cta-btn">See My Work</Link>
+                    <br /><br /><br />
+                  </div>
+                </section>
+                <main>
+                  <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                  <section id="projects" className="glow-white-section" data-aos="fade-up">
+                    <h2>Meet the Developer:</h2>
+                    <div className="developer-photo-container">
+                      <img
+                        src="/jonas-img.png"
+                        alt="Jonas Weeks"
+                        className="developer-photo"
+                      />
+                    </div>
+                    <div className="about-text">
+                      <div>
+                        <p>
+                          I am a full stack developer who thrives on building creative, impactful websites, applications, and AI automation tools. In a world where technology and artificial intelligence are evolving at breakneck speed, I believe that embracing change and leveraging the latest AI tools is essential—not just for innovation, but for staying relevant. My portfolio spans projects from blockchain applications to AI-powered solutions, each one a testament to my drive to adapt, learn, and turn new ideas into real products.
+                        </p>
+                        <p>
+                          Every project is an opportunity to push boundaries and explore what’s possible with modern technology. Whether I’m designing intuitive user interfaces, architecting robust backend systems, integrating AI APIs for intelligent features, or building custom automation workflows, I approach each challenge with a mindset of continuous learning and adaptation. My hands-on process means I’m always experimenting with the latest in Web3, machine learning, and automation—because in today’s world, standing still is not an option.
+                        </p>
+                        <p>
+                          I believe that great software is built by those who are willing to evolve, adapt, and solve problems creatively—especially as AI and emerging technologies reshape our industry. My portfolio reflects not only my foundation in traditional web development, but also my commitment to exploring smart contracts, DeFi protocols, and AI-driven automation. I’m excited to keep moving forward, building solutions that harness the power of both blockchain and AI to meet the demands of our rapidly changing world.
+                        </p>
+                        <div className="availability-info">
+                          <p><strong>Currently available for:</strong></p>
+                          <div className="rate-badges">
+                            <div className="rate-badge">
+                              <span className="service-type">Web Development</span>
+                              <span className="rate-range">$30-$75/hour</span>
+                            </div>
+                            <div className="rate-badge">
+                              <span className="service-type">Blockchain & DApps</span>
+                              <span className="rate-range">$55-$95/hour</span>
+                            </div>
+                            <div className="rate-badge">
+                              <span className="service-type">AI Integration</span>
+                              <span className="rate-range">$70-$120/hour</span>
+                            </div>
+                          </div>
+                          <p><em>Rates vary based on project complexity and timeline.</em></p>
+                        </div>
+                        <div className="testimonials-section" data-aos="fade-up">
+                          <h3>What Clients Are Saying:</h3>
+                          <div className="testimonials-container">
+                            <div className="testimonial">
+                              <div className="testimonial-content">
+                                <span className="typewriter-text" data-text='"Working with Jonas to build our company website was an incredibly smooth and professional experience. From the very beginning, he took the time to understand the needs of my practice and translated them into a site that feels calm, welcoming, and aligned with my brand. He was attentive to detail, highly responsive during the entire process — especially when last-minute updates were needed — and made sure the site was fast, mobile-friendly, and easy for me to manage. I have already received positive feedback from clients about how user-friendly and visually appealing the site is. I am so pleased with the result and would absolutely recommend his work to other small business owners or therapists looking for a reliable developer."'></span>
+                              </div>
+                              <div className="testimonial-author">
+                                <span className="client-name">— Karina, LPCC & Founder</span>
+                                <span className="client-project">Mindful Gateway Therapy</span>
+                              </div>
+                            </div>
+                            <div className="testimonial">
+                              <div className="testimonial-content">
+                                <span className="typewriter-text" data-text='"Building Grubana has been one of the most challenging and rewarding journeys of my career. I created the platform from the ground up to solve a real problem I saw in the food truck community — the disconnect between incredible local food vendors and the people trying to find them. As a full stack developer and founder, I architected every part of Grubana — from the real-time map and ping system to the analytics dashboard and drop claiming system — with scalability, speed, and user experience in mind. But more than just code, Grubana represents my belief that technology should empower small business owners and create vibrant communities. I am proud of what Grubana has become, and even more excited about where it is going. This is just the beginning."'></span>
+                              </div>
+                              <div className="testimonial-author">
+                                <span className="client-name">— Jonas, Developer & Founder</span>
+                                <span className="client-project">Grubana Platform</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <div className="floating-code-symbols">
+                    <FloatingCodeSymbols count={36} />
+                  </div>
+                  <section id="contact" className="contact-section" data-aos="fade-up">
+                    <h2>Contact</h2>
+                    <form className="contact-form" onSubmit={handleSubmit}
+                      action="https://formspree.io/f/xrbkkzqn"
+                      method="POST"
+                    >
+                      <label>
+                        Name
+                        <input type="text" name="name" required />
+                      </label>
+                      <label>
+                        Email
+                        <input type="email" name="email" required />
+                      </label>
+                      <label>
+                        Message
+                        <textarea name="message" rows="5" required />
+                      </label>
+                      <button type="submit">Send</button>
+                      {formMessage && (
+                        <div className="form-message">{formMessage}</div>
+                      )}
+                    </form>
+                  </section>
+                </main>
+                <button
+                  className="back-to-top-link"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                >
+                  ↑ Back to Top
+                </button>
+                <br /><br />
+                <footer ref={footerRef}>
+                  <div className="social-links">
+                    <a href="https://github.com/JWeeks90038" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                      <FaGithub />
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61566879270909" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                      <FaFacebook />
+                    </a>
+                    <a href="https://www.instagram.com/treecastle82/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                      <FaInstagram />
+                    </a>
+                    <a href="https://www.linkedin.com/in/jonas-weeks-447136a4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                      <FaLinkedin />
+                    </a>
+                    <a href="jonasweeks.dev@gmail.com" aria-label="Email">
+                      <FaEnvelope />
+                    </a>
+                  </div>
+                  <p>&copy; {new Date().getFullYear()} Jonas Weeks</p>
+                </footer>
+              </>
+            } />
+            <Route path="/projects" element={<ProjectsPage />} />
+          </Routes>
         </div>
-        
-        <section className="hero-section" data-aos="fade-up">
-          <div className="glass-card">
-            {/* Add video background behind tech stack */}
-            <div className="hero-video-background">
-              <video 
-                className="hero-video-bg"
-                autoPlay 
-                muted 
-                loop 
-                playsInline
-                poster="/video-poster.jpg"
-              >
-                <source src="/matrix_3d_blue.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            
-            <p>Full Stack Web Developer | Creative Coder | Problem Solver</p>
-            <br /><br /><br />
-
-            {/* Tech Stack Badges */}
-            <div className="tech-stack-badges">
-              <div className="tech-category">
-                <span className="learning-label">Languages:</span>
-                <span className="tech-badge">JavaScript</span>
-                <span className="tech-badge">TypeScript</span>
-                <span className="tech-badge">HTML</span>
-                <span className="tech-badge">CSS</span>
-                <span className="tech-badge">Solidity</span>
-                <span className="tech-badge">Python</span>
-              </div>
-              
-              <div className="tech-category">
-                <span className="learning-label">Frameworks & Libraries:</span>
-                <span className="tech-badge">React</span>
-                <span className="tech-badge">Next.js</span>
-                <span className="tech-badge">Tailwind CSS</span>
-                <span className="tech-badge">Node.js</span>
-                <span className="tech-badge">Web3</span>
-              </div>
-              
-              <div className="tech-category">
-                <span className="learning-label">Tools & Platforms:</span>
-                <span className="tech-badge">Git</span>
-                <span className="tech-badge">Vercel</span>
-                <span className="tech-badge">VS Code</span>
-                <span className="tech-badge">npm</span>
-              </div>
-              
-              <div className="tech-category">
-                <span className="learning-label">Databases & Services:</span>
-                <span className="tech-badge">Firebase</span>
-                <span className="tech-badge">API Integration</span>
-              </div>
-            </div>
-
-            <br /><br />
-
-            <Link to="/projects" className="cta-btn">See My Work</Link>
-            <br /><br /><br />
-          </div>
-        </section>
-
-        <main>
-          <br /><br /><br /><br /><br /><br /><br /><br /><br />
-
-          <section id="projects" className="glow-white-section" data-aos="fade-up">
-            <h2>Meet the Developer:</h2>
-            <div className="developer-photo-container">
-              <img
-                src="/jonas-img.png"
-                alt="Jonas Weeks"
-                className="developer-photo"
-              />
-            </div>
-            <div className="about-text">
-              <div>
-               <p>
-  I am a full stack developer who thrives on building creative, impactful websites, applications, and AI automation tools. In a world where technology and artificial intelligence are evolving at breakneck speed, I believe that embracing change and leveraging the latest AI tools is essential—not just for innovation, but for staying relevant. My portfolio spans projects from blockchain applications to AI-powered solutions, each one a testament to my drive to adapt, learn, and turn new ideas into real products.
-</p>
-<p>
-  Every project is an opportunity to push boundaries and explore what’s possible with modern technology. Whether I’m designing intuitive user interfaces, architecting robust backend systems, integrating AI APIs for intelligent features, or building custom automation workflows, I approach each challenge with a mindset of continuous learning and adaptation. My hands-on process means I’m always experimenting with the latest in Web3, machine learning, and automation—because in today’s world, standing still is not an option.
-</p>
-<p>
-  I believe that great software is built by those who are willing to evolve, adapt, and solve problems creatively—especially as AI and emerging technologies reshape our industry. My portfolio reflects not only my foundation in traditional web development, but also my commitment to exploring smart contracts, DeFi protocols, and AI-driven automation. I’m excited to keep moving forward, building solutions that harness the power of both blockchain and AI to meet the demands of our rapidly changing world.
-</p>
-
-                <div className="availability-info">
-                  <p><strong>Currently available for:</strong></p>
-                  <div className="rate-badges">
-                    <div className="rate-badge">
-                      <span className="service-type">Web Development</span>
-                      <span className="rate-range">$30-$75/hour</span>
-                    </div>
-                    <div className="rate-badge">
-                      <span className="service-type">Blockchain & DApps</span>
-                      <span className="rate-range">$55-$95/hour</span>
-                    </div>
-                    <div className="rate-badge">
-                      <span className="service-type">AI Integration</span>
-                      <span className="rate-range">$70-$120/hour</span>
-                    </div>
-                  </div>
-                  <p><em>Rates vary based on project complexity and timeline.</em></p>
-                </div>
-
-                <div className="testimonials-section" data-aos="fade-up">
-                  <h3>What Clients Are Saying:</h3>
-                  <div className="testimonials-container">
-                    <div className="testimonial">
-                      <div className="testimonial-content">
-                        <span className="typewriter-text" data-text='"Working with Jonas to build our company website was an incredibly smooth and professional experience. From the very beginning, he took the time to understand the needs of my practice and translated them into a site that feels calm, welcoming, and aligned with my brand. He was attentive to detail, highly responsive during the entire process — especially when last-minute updates were needed — and made sure the site was fast, mobile-friendly, and easy for me to manage. I have already received positive feedback from clients about how user-friendly and visually appealing the site is. I am so pleased with the result and would absolutely recommend his work to other small business owners or therapists looking for a reliable developer."'></span>
-                      </div>
-                      <div className="testimonial-author">
-                        <span className="client-name">— Karina, LPCC & Founder</span>
-                        <span className="client-project">Mindful Gateway Therapy</span>
-                      </div>
-                    </div>
-                    
-                    <div className="testimonial">
-                      <div className="testimonial-content">
-                        <span className="typewriter-text" data-text='"Building Grubana has been one of the most challenging and rewarding journeys of my career. I created the platform from the ground up to solve a real problem I saw in the food truck community — the disconnect between incredible local food vendors and the people trying to find them. As a full stack developer and founder, I architected every part of Grubana — from the real-time map and ping system to the analytics dashboard and drop claiming system — with scalability, speed, and user experience in mind. But more than just code, Grubana represents my belief that technology should empower small business owners and create vibrant communities. I am proud of what Grubana has become, and even more excited about where it is going. This is just the beginning."'></span>
-                      </div>
-                      <div className="testimonial-author">
-                        <span className="client-name">— Jonas, Developer & Founder</span>
-                        <span className="client-project">Grubana Platform</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> 
-            </div> 
-          </section>
-
-          <div className="floating-code-symbols">
-            <FloatingCodeSymbols count={36} />
-          </div>
-
-          <section id="contact" className="contact-section" data-aos="fade-up">
-            <h2>Contact</h2>
-            <form className="contact-form" onSubmit={handleSubmit}
-              action="https://formspree.io/f/xrbkkzqn"
-              method="POST"
-            >
-              <label>
-                Name
-                <input type="text" name="name" required />
-              </label>
-              <label>
-                Email
-                <input type="email" name="email" required />
-              </label>
-              <label>
-                Message
-                <textarea name="message" rows="5" required />
-              </label>
-              <button type="submit">Send</button>
-              {formMessage && (
-                <div className="form-message">{formMessage}</div>
-              )}
-            </form>
-          </section>
-        </main>
-        
-        <button
-          className="back-to-top-link"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        >
-          ↑ Back to Top
-        </button>
-        <br /><br />
-        
-        <footer ref={footerRef}>
-          <div className="social-links">
-            <a href="https://github.com/JWeeks90038" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <FaGithub />
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61566879270909" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <FaFacebook />
-            </a>
-            <a href="https://www.instagram.com/treecastle82/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <FaInstagram />
-            </a>
-            <a href="https://www.linkedin.com/in/jonas-weeks-447136a4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <FaLinkedin />
-            </a>
-            <a href="jonasweeks.dev@gmail.com" aria-label="Email">
-              <FaEnvelope />
-            </a>
-          </div>
-          <p>&copy; {new Date().getFullYear()} Jonas Weeks</p>
-        </footer>
       </div>
-    }
-  />
-  <Route path="/projects" element={<ProjectsPage />} />
-</Routes>
-         </div>
-        </div>
-          </>
-  </>
-);
+    </div>
+  );
+// ...existing code...
 }
 
 export default App
