@@ -395,6 +395,7 @@ useEffect(() => {
                         muted 
                         loop 
                         playsInline
+                        preload="auto"
                         poster="/video-poster.jpg"
                       >
                         <source src="/matrix_3d_blue.mp4" type="video/mp4" />
