@@ -9,7 +9,7 @@ const projects = [
     link: "https://mindfulgatewaytherapy.com",
     image: "/MGT-Screen-Grab.png",
     description: "Mindful Gateway Therapy is a calming, responsive, and informative website built for a licensed therapist offering holistic mental health services. The site presents services, booking details, and therapeutic approaches in a professional and welcoming tone.",
-    tech: ["React", "Next.js", "Tailwind CSS", "Vercel"]
+    tech: ["HTML", "CSS", "Javascript", "SVG","Vercel"]
   },
   {
     title: "Grubana",
@@ -59,6 +59,7 @@ export default function ProjectsPage() {
           muted 
           loop 
           playsInline
+          preload="auto"
           poster="/video-poster.jpg"
         >
           <source src="/cinematic_blue_numbers.mp4" type="video/mp4" />
