@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import AnimatedCode from './AnimatedCode';
 import CircuitGrid from './CircuitGrid';
 import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
+import FootagePage from "./FootagePage";
 import ProjectsPage from "./ProjectsPage";
 import ScrollToTop from "./ScrollToTop";
 import FloatingCodeSymbols from "./FloatingCodeSymbols";
@@ -364,6 +365,10 @@ useEffect(() => {
           <span className="orb-dot"></span>
           <span className="orb-label">Projects</span>
         </Link>
+        <Link to="/footage" className="nav-orb">
+          <span className="orb-dot"></span>
+          <span className="orb-label">Footage</span>
+        </Link>
         <a
           href="#contact"
           className="nav-orb"
@@ -410,10 +415,10 @@ useEffect(() => {
                     <div className="tech-stack-badges">
                       <div className="tech-category">
                         <span className="learning-label">Languages:</span>
-                        <span className="tech-badge">JavaScript</span>
-                        <span className="tech-badge">TypeScript</span>
                         <span className="tech-badge">HTML</span>
                         <span className="tech-badge">CSS</span>
+                        <span className="tech-badge">JavaScript</span>
+                        <span className="tech-badge">TypeScript</span>
                         <span className="tech-badge">Solidity</span>
                         <span className="tech-badge">Python</span>
                       </div>
@@ -421,7 +426,6 @@ useEffect(() => {
                         <span className="learning-label">Frameworks & Libraries:</span>
                         <span className="tech-badge">React</span>
                         <span className="tech-badge">Next.js</span>
-                        <span className="tech-badge">Tailwind CSS</span>
                         <span className="tech-badge">Node.js</span>
                         <span className="tech-badge">Web3</span>
                       </div>
@@ -429,12 +433,13 @@ useEffect(() => {
                         <span className="learning-label">Tools & Platforms:</span>
                         <span className="tech-badge">Git</span>
                         <span className="tech-badge">Vercel</span>
+                        <span className="tech-badge">Railway</span>
                         <span className="tech-badge">VS Code</span>
-                        <span className="tech-badge">npm</span>
                       </div>
                       <div className="tech-category">
                         <span className="learning-label">Databases & Services:</span>
                         <span className="tech-badge">Firebase</span>
+                        <span className="tech-badge">Clerk</span>
                         <span className="tech-badge">API Integration</span>
                       </div>
                     </div>
@@ -567,6 +572,7 @@ useEffect(() => {
               </>
             } />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/footage" element={<FootagePage />} />
           </Routes>
         </div>
       </div>

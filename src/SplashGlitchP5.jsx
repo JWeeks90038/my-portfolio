@@ -24,11 +24,13 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
       myp5 = new p5(sketch, sketchRef.current);
     }
 
+    const CODE_SNIPPETS = [];
     const sketch = (p) => {
       let glitchBlocks = [];
       let glitchScanlines = [];
       let glitchSlices = [];
       let glitchText = text;
+      let gradientBg;
 
       function setupGlitchBlocks() {
         glitchBlocks = [];
@@ -38,9 +40,9 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
             y: p.random(p.height),
             w: p.random(p.width * 0.18, p.width * 0.32),
             h: p.random(18, 32),
-            code: "",
+            code: CODE_SNIPPETS.length > 0 ? p.random(CODE_SNIPPETS) : '',
             alpha: p.random(80, 180),
-            speed: p.random(0.5, 2),
+            speed: p.random(1.5, 4), // Increased speed
             t: p.random(1000)
           });
         }
@@ -59,7 +61,7 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
           glitchSlices.push({
             y: p.random(p.height),
             h: p.random(10, 40),
-            dx: p.random(-40, 40),
+            dx: p.random(-80, 80), // More aggressive slice
             t: p.random(1000)
           });
         }
@@ -72,8 +74,19 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
         return [window.innerWidth, window.innerHeight];
       }
 
+      function createGradientBg(w, h) {
+        let g = p.createGraphics(w, h);
+        g.colorMode(p.HSB, 360, 100, 100, 255);
+        for (let y = 0; y < h; y++) {
+          let inter = p.map(y, 0, h, 0, 1);
+          let c = p.lerpColor(p.color(250, 60, 5, 255), p.color(280, 40, 10, 255), inter * 0.8);
+          g.stroke(c);
+          g.line(0, y, w, y);
+        }
+        return g;
+      }
+
       p.setup = function () {
-        // Wait for parent to have a size
         let w = 0, h = 0;
         if (p._curElement && p._curElement.elt && p._curElement.elt.parentElement) {
           w = p._curElement.elt.parentElement.offsetWidth;
@@ -83,7 +96,7 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
           h = window.innerHeight;
         }
         p.createCanvas(w, h);
-        // Make canvas fill parent absolutely
+        p.frameRate(60); // Ensure high frame rate
         p.canvas.style.position = 'absolute';
         p.canvas.style.top = '0';
         p.canvas.style.left = '0';
@@ -91,7 +104,8 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
         p.canvas.style.height = '100%';
         p.canvas.style.display = 'block';
         p.colorMode(p.HSB, 360, 100, 100, 255);
-        p.textFont("monospace");
+        p.textFont('monospace');
+        gradientBg = createGradientBg(w, h);
         setupGlitchBlocks();
         setupGlitchScanlines();
         setupGlitchSlices();
@@ -100,86 +114,95 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
       p.windowResized = function () {
         const [w, h] = getParentSize();
         p.resizeCanvas(w, h);
-        // Re-apply styles in case
         p.canvas.style.position = 'absolute';
         p.canvas.style.top = '0';
         p.canvas.style.left = '0';
         p.canvas.style.width = '100%';
         p.canvas.style.height = '100%';
         p.canvas.style.display = 'block';
+        gradientBg = createGradientBg(w, h);
         setupGlitchBlocks();
         setupGlitchScanlines();
         setupGlitchSlices();
       };
 
       p.draw = function () {
-        p.background('#18181b');
-        for (let y = 0; y < p.height; y++) {
-          let inter = p.map(y, 0, p.height, 0, 1);
-          let c = p.lerpColor(p.color(250, 60, 5, 255), p.color(280, 40, 10, 255), inter * 0.8);
-          p.stroke(c);
-          p.line(0, y, p.width, y);
+        // --- Background gradient (cached) ---
+        if (gradientBg) {
+          p.image(gradientBg, 0, 0, p.width, p.height);
         }
-        p.textFont("monospace");
+
+        // --- Glitch blocks ---
+        p.textFont('monospace');
         p.textSize(16);
         for (let b of glitchBlocks) {
-          let yShift = p.sin(p.frameCount * 0.09 + b.t) * 8 + p.random(-1, 1);
+          let yShift = p.sin(p.frameCount * 0.18 + b.t) * 12 + p.random(-2, 2); // Faster, more energetic
           let x = b.x;
           let y = b.y + yShift;
-          let flicker = p.random() < 0.12;
+          let flicker = p.random() < 0.22; // More frequent flicker
           p.fill(flicker ? p.color(140, 80, 100, 220) : p.color(200, 80, 100, 220));
           p.textAlign(p.LEFT, p.TOP);
           if (b.code && b.code.length > 0) p.text(b.code, x + 8, y + 6);
-          if (p.random() < 0.01) {
+          if (p.random() < 0.03) { // More frequent jump
             b.x = p.random(0, p.width - b.w);
             b.y = p.random(0, p.height - b.h);
-            b.code = "";
+            b.code = CODE_SNIPPETS.length > 0 ? p.random(CODE_SNIPPETS) : '';
           }
-          b.x += p.random(-0.5, 0.5) + b.speed * 0.1 * (p.random() < 0.5 ? 1 : -1);
-          b.y += p.random(-0.2, 0.2);
+          b.x += p.random(-1.2, 1.2) + b.speed * 0.25 * (p.random() < 0.5 ? 1 : -1); // Faster
+          b.y += p.random(-0.5, 0.5);
           if (b.x > p.width) b.x = -b.w;
           if (b.x < -b.w) b.x = p.width;
           if (b.y > p.height) b.y = -b.h;
           if (b.y < -b.h) b.y = p.height;
         }
+
+        // --- Glitch slices ---
         for (let s of glitchSlices) {
-          if (p.random() < 0.08) {
-            s.dx = p.random(-60, 60);
+          if (p.random() < 0.16) {
+            s.dx = p.random(-120, 120);
             s.y = p.random(p.height);
-            s.h = p.random(8, 40);
+            s.h = p.random(8, 60);
           }
           let y = p.int(s.y);
           let h = p.int(s.h);
           p.copy(0, y, p.width, h, s.dx, y, p.width, h);
         }
+
+        // --- Glitch scanlines ---
         for (let s of glitchScanlines) {
           p.fill(0, 0, 0, s.alpha);
           p.noStroke();
           p.rect(0, s.y, p.width, 1);
         }
+
+        // --- Glitch text (main effect) ---
         let baseY = p.height * 0.5;
         let baseX = p.width * 0.5;
         p.push();
         p.textAlign(p.CENTER, p.CENTER);
         p.textSize(64);
+        // Main text in blue
         p.fill(200, 80, 100, 220);
         p.text(glitchText, baseX, baseY);
-        if (p.frameCount % 12 < 4) {
+        // RGB split and flicker, more dynamic
+        if (p.frameCount % 8 < 4) {
           p.fill(140, 80, 100, 120);
-          p.text(glitchText, baseX + 3, baseY + 1);
+          p.text(glitchText, baseX + p.random(2, 6), baseY + p.random(1, 3));
           p.fill(180, 80, 100, 120);
-          p.text(glitchText, baseX - 3, baseY - 1);
+          p.text(glitchText, baseX - p.random(2, 6), baseY - p.random(1, 3));
         }
-        if (p.random() < 0.12) {
+        // Digital scan flicker, more frequent
+        if (p.random() < 0.22) {
           p.fill(0, 0, 100, 60);
-          p.text(glitchText, baseX + p.random(-2, 2), baseY + p.random(-2, 2));
+          p.text(glitchText, baseX + p.random(-4, 4), baseY + p.random(-4, 4));
         }
+        // Data code overlay (numbers)
         p.textSize(18);
         p.fill(140, 80, 100, 60);
         let y = baseY + 60;
         let code = '';
         for (let j = 0; j < 24; j++) code += String(p.int(p.random(0, 10)));
-        p.text(code, baseX, y + p.sin(p.frameCount * 0.1) * 2);
+        p.text(code, baseX, y + p.sin(p.frameCount * 0.2) * 4);
         p.pop();
       };
     };

@@ -3,29 +3,37 @@ import { FaGithub, FaFacebook, FaInstagram, FaLinkedin, FaEnvelope, FaChevronLef
 import "./App.css";
 
 const projects = [
-  {
-    title: "Mindful Gateway Therapy",
+    {
+    title: "Dream Mint - Coming Soon",
     year: 2025,
-    link: "https://mindfulgatewaytherapy.com",
-    image: "/MGT-Screen-Grab.png",
-    description: "Mindful Gateway Therapy is a calming, responsive, and informative website built for a licensed therapist offering holistic mental health services. The site presents services, booking details, and therapeutic approaches in a professional and welcoming tone.",
-    tech: ["HTML", "CSS", "Javascript", "SVG","Vercel"]
+    link: "#",
+    image: "/Dream-Mint-Screen-Grab.png",
+    description: "Dream Mint is an innovative decentralized application (dApp) that revolutionizes digital asset creation and NFT minting through AI-powered dream interpretation. Users can input their dreams, which are then transformed into unique digital artwork using advanced AI image generation APIs. The platform combines blockchain technology with artificial intelligence to create personalized, one-of-a-kind NFTs that represent users' subconscious experiences. Built on Ethereum with smart contract functionality for secure minting, trading, and royalty distribution.",
+    tech: ["React", "Solidity", "Web3.js", "OpenAI API", "Solana", "IPFS", "MetaMask & Phantom Integration"]
+  },
+  {
+    title: "Tikkra",
+    year: 2025,
+    link: "https://tikkra.com",
+    image: "/tikkra-grab.png",
+    description: "Tikkra is an advanced AI-powered timestamp generator designed specifically for content creators. By analyzing transcripts, Tikkra automatically generates precise and context-aware timestamps, streamlining the process of video and podcast editing. This allows creators to focus on producing high-quality content while Tikkra handles the technical details of segmenting and organizing their work. With its intuitive interface and robust AI algorithms, Tikkra empowers creators to enhance audience engagement and improve content accessibility with minimal effort.",
+    tech: ["React", "CSS", "Firebase","OpenAI API", "Vercel", "Railway"]
   },
   {
     title: "Grubana",
     year: 2025,
     link: "https://grubana.com",
-    image: "/Grubana-Screen-Grab.png",
-    description: "Grubana is a dynamic web platform that connects food lovers with mobile food vendors in real time. Designed to support food trucks, trailers, and carts, Grubana lets users discover nearby drops and interact through time-sensitive 'pings' and heatmaps.",
+    image: "/grubana-grab.png",
+    description: "Grubana is a dynamic, real-time web platform that bridges the gap between food lovers and mobile food vendors. Built to support food trucks, trailers, and carts, Grubana enables users to discover nearby vendor 'drops' on an interactive map, receive live updates, and engage with vendors through time-sensitive pings and heatmaps. The platform features vendor profiles, real-time location tracking, and analytics dashboards for business owners. With robust authentication, geolocation, and notification systems, Grubana streamlines the process of finding, promoting, and enjoying local mobile cuisine, empowering both vendors and customers to connect in new and meaningful ways.",
     tech: ["React", "JavaScript", "Tailwind CSS", "Firebase Firestore", "Firebase Authentication", "Firebase Cloud Functions", "Google Maps API", "Geolocation API", "Real-time Database", "Vercel"]
   },
   {
-    title: "Dream Mint - Coming Soon",
+    title: "Mindful Gateway Therapy",
     year: 2025,
-    link: "#",
-    image: "/Dream-Mint-Screen-Grab.png",
-    description: "Dream Mint is an innovative decentralized application (DApp) that revolutionizes digital asset creation and NFT minting through AI-powered dream interpretation. Users can input their dreams, which are then transformed into unique digital artwork using advanced AI image generation APIs. The platform combines blockchain technology with artificial intelligence to create personalized, one-of-a-kind NFTs that represent users' subconscious experiences. Built on Ethereum with smart contract functionality for secure minting, trading, and royalty distribution.",
-    tech: ["React", "Solidity", "Web3.js", "OpenAI API", "Ethereum", "IPFS", "MetaMask Integration"]
+    link: "https://mindfulgatewaytherapy.com",
+    image: "/MGT-Screen-Grab.png",
+    description: "Mindful Gateway Therapy is a thoughtfully designed, fully responsive website created for a licensed therapist specializing in holistic mental health services. The platform provides a calming and accessible user experience, featuring detailed service descriptions, therapist credentials, and an easy-to-navigate booking system. Visitors can explore therapeutic approaches, read client testimonials, and access valuable mental health resources. Built with a focus on professionalism, trust, and accessibility, the site helps clients connect with the therapist in a welcoming and supportive digital environment.",
+    tech: ["HTML", "CSS", "Javascript", "SVG","Vercel"]
   }
 ];
 
