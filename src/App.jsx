@@ -1,22 +1,24 @@
-import { useEffect, useRef, useState } from 'react'
-import AnimatedCode from './AnimatedCode'
-import CircuitGrid from './CircuitGrid'
+import SplashGlitchP5 from './SplashGlitchP5';
+
+import { useEffect, useRef, useState } from 'react';
+import AnimatedCode from './AnimatedCode';
+import CircuitGrid from './CircuitGrid';
 import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
 import ProjectsPage from "./ProjectsPage";
 import ScrollToTop from "./ScrollToTop";
 import FloatingCodeSymbols from "./FloatingCodeSymbols";
 import { FaGithub, FaFacebook, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import './App.css'
+import './App.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
 
 
 function App() {
   //const [scrollY, setScrollY] = useState(window.scrollY);
   const [time, setTime] = useState(0);
   const [showSplash, setShowSplash] = useState(true);
-  const [splashFading, setSplashFading] = useState(false);
-  const [splashWipeUp, setSplashWipeUp] = useState(false);
+  const [wipeUp, setWipeUp] = useState(false);
   const [gradientT, setGradientT] = useState(0);
   const [svgWidth, setSvgWidth] = useState(window.innerWidth);
   const [docHeight, setDocHeight] = useState(document.documentElement.scrollHeight);
@@ -111,22 +113,7 @@ const handleSubmit = async (e) => {
   }
 };
 
-// Splash intro effect
-useEffect(() => {
-  if (showSplash) {
-    // Start glitch-out after 1.2s
-    const glitchTimer = setTimeout(() => setSplashFading(true), 1200);
-    // Start wipe-up after 1.7s
-    const wipeUpTimer = setTimeout(() => setSplashWipeUp(true), 1700);
-    // Remove splash after wipe-up animation
-    const removeTimer = setTimeout(() => setShowSplash(false), 2300);
-    return () => {
-      clearTimeout(glitchTimer);
-      clearTimeout(wipeUpTimer);
-      clearTimeout(removeTimer);
-    };
-  }
-}, [showSplash]);
+
 
 useEffect(() => {
   setShowGlow(true);
@@ -342,14 +329,29 @@ useEffect(() => {
   scrollableHeight: contentHeight - window.innerHeight,
   progress
 });*/
+  // Splash wipe-up logic
+  useEffect(() => {
+    if (showSplash) {
+      // Show splash for 2.5s, then trigger wipe-up
+      const timer1 = setTimeout(() => setWipeUp(true), 4000);
+      // After wipe-up animation (1s), hide splash
+      const timer2 = setTimeout(() => setShowSplash(false), 4600);
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
+    }
+  }, [showSplash]);
+
   return (
     <div>
       {/* Splash Intro Overlay */}
       {showSplash && (
-        <div className={`splash-intro-overlay${splashWipeUp ? ' wipe-up' : ''}`}>
-          <span className={`splash-intro-name${splashFading ? ' glitch-out' : ''}`}>Jonas Weeks</span>
+        <div className={`splash-intro-overlay${wipeUp ? ' wipe-up' : ''}`}>
+          <SplashGlitchP5 text="Jonas Weeks" />
         </div>
       )}
+      {/* Main site content always present, just covered by overlay */}
       <div className="atmospheric-gradient-bg" aria-hidden="true"></div>
       <a id="top"></a>
       <ScrollToTop />
@@ -373,7 +375,7 @@ useEffect(() => {
       </nav>
       <div className={`site-fade-in${fadeIn ? ' visible' : ''}`}> 
         <div className="atmospheric-gradient-bg" aria-hidden="true"></div>
-        {/* Main site content, only after splash */}
+        {/* Main site content, always present */}
         <div className="hazy-bg" aria-hidden="true"></div>
         <div className="hazy-blob blob1"></div>
         <div className="hazy-blob blob2"></div>
