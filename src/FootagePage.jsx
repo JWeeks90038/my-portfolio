@@ -12,9 +12,9 @@ const footageClips = [
     description: "A high-intensity animation featuring flashing red breach alerts, digital warning signals, and cascading code snippets. Perfect for illustrating cybersecurity threats, hacking scenes, or IT incident response. This footage captures the urgency and chaos of a malware attack with bold colors and dynamic motion."
   },
   {
-    title: "Cinematic Elemental Wave",
-    poster: "/cinematic-elemental-wave-preview.png",
-    description: "A mesmerizing animation featuring flowing, wave-like patterns that evoke the movement of elemental forces. This cinematic footage blends digital artistry with fluid motion, making it ideal for sci-fi intros, creative backgrounds, technology presentations, or any project seeking a dynamic and visually captivating effect."
+    title: "Blue Particle Streams Evolution",
+    poster: "/blue-particle-streams-preview.png",
+    description: "A captivating 3D animation featuring luminous blue particles swirling and weaving through space, creating intricate, hypnotic patterns. The dynamic movement and depth evoke a sense of wonder and futuristic energy, making this footage ideal for technology intros, sci-fi visuals, creative backgrounds, or any project seeking a mesmerizing and immersive digital atmosphere."
   },
   {
     title: "Blue & Green Energy Particles",
@@ -25,6 +25,11 @@ const footageClips = [
     title: "Crawling Particles",
     poster: "/crawling-particles-preview.png",
     description: "An intricate animation featuring countless particles crawling and weaving across a dark digital surface, forming dynamic trails and organic patterns. This footage evokes the feel of neural networks, data flows, or microscopic life, making it ideal for technology, science, or abstract creative projects."
+  },
+  {
+    title: "Green Diamond Craft Hover",
+    poster: "/green-diamond-craft-preview.png",
+    description: "A mesmerizing 3D animation featuring a luminous green diamond-shaped craft hovering and gracefully spinning above a wet, dark landscape. Cool, cinematic lighting reflects off the glistening surface, creating an atmospheric and futuristic scene. Perfect for sci-fi intros, technology showcases, or any project seeking a striking and immersive visual centerpiece."
   }
   // Add more clips as needed
 ];
@@ -41,7 +46,6 @@ export default function FootagePage() {
           loop
           playsInline
           preload="auto"
-          poster="/cinematic-elemental-wave-preview.png"
           style={{
             position: 'absolute',
             top: 0,
@@ -56,7 +60,7 @@ export default function FootagePage() {
             transition: 'opacity 0.4s',
           }}
         >
-          <source src="/blue-particle-streams-evolution.mp4" type="video/mp4" />
+          <source src="/cinematic-elemental-wave.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div style={{ position: 'relative', zIndex: 2, padding: '3.5rem 1.5rem 2.5rem 1.5rem' }}>
@@ -78,7 +82,7 @@ export default function FootagePage() {
               letterSpacing: '0.04em',
               transition: 'background 0.2s, color 0.2s',
             }}>
-              📷 View Full Collection on Shutterstock
+              View Full Collection on Shutterstock
             </a>
           </div>
         </div>
