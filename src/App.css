@@ -1257,6 +1257,38 @@ html, body {
   }
 }
 
+/* Video Section */
+.footage-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.footage-card {
+  background: #181b22;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 1.5rem;
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footage-card video {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.footage-page {
+  padding-top: 75px; /* Adjust as needed to clear the navbar */
+}
+
 .rate-info {
   color: #94a3b8;
   font-size: 0.9rem;
