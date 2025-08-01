@@ -13,7 +13,7 @@ const footageClips = [
   },
   {
     title: "Blue Particle Streams Evolution",
-    poster: "/blue-particle-streams-preview.png",
+    poster: "/blue-particles-streams-preview.png",
     description: "A captivating 3D animation featuring luminous blue particles swirling and weaving through space, creating intricate, hypnotic patterns. The dynamic movement and depth evoke a sense of wonder and futuristic energy, making this footage ideal for technology intros, sci-fi visuals, creative backgrounds, or any project seeking a mesmerizing and immersive digital atmosphere."
   },
   {
@@ -60,7 +60,7 @@ export default function FootagePage() {
             transition: 'opacity 0.4s',
           }}
         >
-          <source src="/cinematic-elemental-wave.mp4" type="video/mp4" />
+          <source src="/cinematic_elemental_wave.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div style={{ position: 'relative', zIndex: 2, padding: '3.5rem 1.5rem 2.5rem 1.5rem' }}>
