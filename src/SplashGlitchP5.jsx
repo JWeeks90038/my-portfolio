@@ -37,12 +37,15 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
       let glitchSlices = [];
       let glitchText = text;
       let gradientBg;
+      let glitchActive = false;
 
-      // Lower numbers for mobile
-      const isMobileDevice = isMobile();
-      const BLOCKS = isMobileDevice ? 7 : 18;
-      const SLICES = isMobileDevice ? 3 : 8;
-      const SCANLINE_STEP = isMobileDevice ? 4 : 2;
+      // Start glitch after 2 seconds
+      setTimeout(() => { glitchActive = true; }, 2000);
+
+      // Use same parameters for all devices for consistent glitch speed
+      const BLOCKS = 18;
+      const SLICES = 8;
+      const SCANLINE_STEP = 2;
 
       function setupGlitchBlocks() {
         glitchBlocks = [];
@@ -108,7 +111,7 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
           h = window.innerHeight;
         }
         p.createCanvas(w, h);
-        if (isMobileDevice) p.pixelDensity(1); // Lower pixel density for mobile
+        // Use default pixel density for all devices for consistent glitch look
         p.frameRate(60);
         p.canvas.style.position = 'absolute';
         p.canvas.style.top = '0';
@@ -143,6 +146,19 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
         // --- Background gradient (cached) ---
         if (gradientBg) {
           p.image(gradientBg, 0, 0, p.width, p.height);
+        }
+
+        if (!glitchActive) {
+          // Show only the main text, no glitch
+          let baseY = p.height * 0.5;
+          let baseX = p.width * 0.5;
+          p.push();
+          p.textAlign(p.CENTER, p.CENTER);
+          p.textSize(64);
+          p.fill(200, 80, 100, 220);
+          p.text(glitchText, baseX, baseY);
+          p.pop();
+          return;
         }
 
         // --- Glitch blocks ---

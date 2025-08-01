@@ -333,10 +333,10 @@ useEffect(() => {
   // Splash wipe-up logic
   useEffect(() => {
     if (showSplash) {
-      // Show splash for 2.5s, then trigger wipe-up
-      const timer1 = setTimeout(() => setWipeUp(true), 4000);
+      // Show splash for 6s, then trigger wipe-up
+      const timer1 = setTimeout(() => setWipeUp(true), 6000);
       // After wipe-up animation (1s), hide splash
-      const timer2 = setTimeout(() => setShowSplash(false), 4600);
+      const timer2 = setTimeout(() => setShowSplash(false), 7000);
       return () => {
         clearTimeout(timer1);
         clearTimeout(timer2);
