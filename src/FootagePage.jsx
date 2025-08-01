@@ -51,7 +51,7 @@ export default function FootagePage() {
             objectFit: 'cover',
             zIndex: 0,
             opacity: 0.22,
-            filter: 'blur(2.5px) brightness(0.7)',
+            filter: typeof window !== 'undefined' && window.innerWidth <= 600 ? 'blur(1px) brightness(0.95)' : 'blur(2.5px) brightness(0.7)',
             pointerEvents: 'none',
             transition: 'opacity 0.4s',
           }}

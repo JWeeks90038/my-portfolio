@@ -22,7 +22,7 @@
 
 @media (max-width: 600px) {
   .splash-intro-overlay.wipe-up {
-    animation: wipeUp 1.2s cubic-bezier(0.7,0.2,0.8,1) forwards;
+    animation: wipeUp 0.7s ease-in-out forwards;
   }
 }
 
