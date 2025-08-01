@@ -42,10 +42,11 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
       // Start glitch after 2 seconds
       setTimeout(() => { glitchActive = true; }, 2000);
 
-      // Use same parameters for all devices for consistent glitch speed
-      const BLOCKS = 18;
-      const SLICES = 8;
-      const SCANLINE_STEP = 2;
+      // Restore mobile-specific parameters for better performance
+      const isMobileDevice = isMobile();
+      const BLOCKS = isMobileDevice ? 7 : 18;
+      const SLICES = isMobileDevice ? 3 : 8;
+      const SCANLINE_STEP = isMobileDevice ? 4 : 2;
 
       function setupGlitchBlocks() {
         glitchBlocks = [];
@@ -111,7 +112,7 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
           h = window.innerHeight;
         }
         p.createCanvas(w, h);
-        // Use default pixel density for all devices for consistent glitch look
+        if (isMobileDevice) p.pixelDensity(1); // Lower pixel density for mobile
         p.frameRate(60);
         p.canvas.style.position = 'absolute';
         p.canvas.style.top = '0';
