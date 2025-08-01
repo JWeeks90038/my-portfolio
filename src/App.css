@@ -11,8 +11,19 @@
   }
 }
 
+
 .splash-intro-overlay.wipe-up {
   animation: wipeUp 0.6s cubic-bezier(0.7,0.2,0.8,1) forwards;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+@media (max-width: 600px) {
+  .splash-intro-overlay.wipe-up {
+    animation: wipeUp 1.2s cubic-bezier(0.7,0.2,0.8,1) forwards;
+  }
 }
 
 
@@ -29,6 +40,10 @@
   justify-content: center;
   pointer-events: none;
   overflow: hidden;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 *, *::before, *::after {

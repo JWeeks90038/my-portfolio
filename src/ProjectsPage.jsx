@@ -25,7 +25,7 @@ const projects = [
     link: "https://grubana.com",
     image: "/grubana-grab.png",
     description: "Grubana is a dynamic, real-time web platform that bridges the gap between food lovers and mobile food vendors. Built to support food trucks, trailers, and carts, Grubana enables users to discover nearby vendor 'drops' on an interactive map, receive live updates, and engage with vendors through time-sensitive pings and heatmaps. The platform features vendor profiles, real-time location tracking, and analytics dashboards for business owners. With robust authentication, geolocation, and notification systems, Grubana streamlines the process of finding, promoting, and enjoying local mobile cuisine, empowering both vendors and customers to connect in new and meaningful ways.",
-    tech: ["React", "JavaScript", "Tailwind CSS", "Firebase Firestore", "Firebase Authentication", "Firebase Cloud Functions", "Google Maps API", "Geolocation API", "Real-time Database", "Vercel"]
+    tech: ["React", "JavaScript", "Tailwind CSS", "Firebase Firestore", "Firebase Authentication", "Firebase Cloud Functions", "Google Maps API", "Real-time Database", "Vercel"]
   },
   {
     title: "Mindful Gateway Therapy",

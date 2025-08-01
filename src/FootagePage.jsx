@@ -22,8 +22,8 @@ export default function FootagePage() {
     <section className="footage-page" style={{ marginTop: '4rem' }}>
       <h2>Stock Footage Collection</h2>
       <div className="footage-under-construction" style={{ textAlign: 'center', margin: '1.5rem 0', color: '#888', fontStyle: 'italic' }}>
-        🚧 This page is under construction! More dazzling stock footage is on the way. 🚧<br />
-        (Our editors are currently negotiating with their coffee mugs.)
+        🚧 This page is under construction! Dazzling stock footage is on the way. 🚧<br />
+        (Our developer is currently negotiating with his coffee mugs.)
       </div>
       <div className="footage-grid">
         {footageClips.map((clip, idx) => (
