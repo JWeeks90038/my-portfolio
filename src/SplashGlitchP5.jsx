@@ -5,6 +5,12 @@ import p5 from "p5";
 const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
   const sketchRef = useRef();
 
+  // Utility: detect mobile device
+  function isMobile() {
+    if (typeof window === 'undefined') return false;
+    return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
 
   useEffect(() => {
     let myp5;
@@ -32,9 +38,15 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
       let glitchText = text;
       let gradientBg;
 
+      // Lower numbers for mobile
+      const isMobileDevice = isMobile();
+      const BLOCKS = isMobileDevice ? 7 : 18;
+      const SLICES = isMobileDevice ? 3 : 8;
+      const SCANLINE_STEP = isMobileDevice ? 4 : 2;
+
       function setupGlitchBlocks() {
         glitchBlocks = [];
-        for (let i = 0; i < 18; i++) {
+        for (let i = 0; i < BLOCKS; i++) {
           glitchBlocks.push({
             x: p.random(p.width),
             y: p.random(p.height),
@@ -42,7 +54,7 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
             h: p.random(18, 32),
             code: CODE_SNIPPETS.length > 0 ? p.random(CODE_SNIPPETS) : '',
             alpha: p.random(80, 180),
-            speed: p.random(1.5, 4), // Increased speed
+            speed: p.random(1.2, 2.2), // Slower on mobile
             t: p.random(1000)
           });
         }
@@ -50,18 +62,18 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
 
       function setupGlitchScanlines() {
         glitchScanlines = [];
-        for (let y = 0; y < p.height; y += 2) {
+        for (let y = 0; y < p.height; y += SCANLINE_STEP) {
           glitchScanlines.push({ y, alpha: p.random(10, 30) });
         }
       }
 
       function setupGlitchSlices() {
         glitchSlices = [];
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < SLICES; i++) {
           glitchSlices.push({
             y: p.random(p.height),
             h: p.random(10, 40),
-            dx: p.random(-80, 80), // More aggressive slice
+            dx: p.random(-60, 60), // Less aggressive on mobile
             t: p.random(1000)
           });
         }
@@ -96,7 +108,8 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
           h = window.innerHeight;
         }
         p.createCanvas(w, h);
-        p.frameRate(60); // Ensure high frame rate
+        if (isMobileDevice) p.pixelDensity(1); // Lower pixel density for mobile
+        p.frameRate(60);
         p.canvas.style.position = 'absolute';
         p.canvas.style.top = '0';
         p.canvas.style.left = '0';
