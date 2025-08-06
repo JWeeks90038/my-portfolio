@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaGithub, FaFacebook, FaInstagram, FaLinkedin, FaEnvelope, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "./App.css";
 
 const projects = [
-    {
+  {
     title: "Dream Mint - Coming Soon",
     year: 2025,
     link: "#",
@@ -37,8 +37,17 @@ const projects = [
   }
 ];
 
-export default function ProjectsPage() {
+const ProjectsPage = () => {
   const [currentProject, setCurrentProject] = useState(0);
+  const [bgOffset, setBgOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setBgOffset(window.scrollY * 0.3); // Adjust multiplier for speed
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const nextProject = () => {
     setCurrentProject((prev) => (prev + 1) % projects.length);
@@ -52,38 +61,35 @@ export default function ProjectsPage() {
     setCurrentProject(index);
   };
 
- return (
-  <>
-    <div className="name-watermark">
-      <span>Jonas Weeks</span>
-    </div>
-    
-    <section className="projects-page">
-      {/* Add video background */}
-      <div className="projects-video-background">
-        <video 
-          className="projects-video-bg"
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          preload="auto"
-          poster="/video-poster.jpg"
-        >
-          <source src="/cinematic_blue_numbers.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+  return (
+    <>
+      <div className="name-watermark">
+        <span>Jonas Weeks</span>
       </div>
-      
-      <h2>My Projects</h2>
-      
-      <div className="project-carousel">
+      <section className="projects-page">
+        {/* Replace video background with PNG image background */}
+        <div className="projects-video-background">
+          <img
+            src="/coding-background.png"
+            alt="Cinematic Blue Numbers Background"
+            className="projects-video-bg"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              borderRadius: '1.5rem',
+              transform: `translateY(${bgOffset}px)`,
+              transition: 'transform 0.1s linear',
+            }}
+          />
+        </div>
+        <h2>My Projects</h2>
+        <div className="project-carousel">
           {/* Move controls to the top */}
           <div className="carousel-controls">
             <button onClick={prevProject} className="carousel-btn">
               <FaChevronLeft />
             </button>
-            
             <div className="carousel-dots">
               {projects.map((_, index) => (
                 <button
@@ -93,29 +99,26 @@ export default function ProjectsPage() {
                 />
               ))}
             </div>
-            
             <button onClick={nextProject} className="carousel-btn">
               <FaChevronRight />
             </button>
           </div>
-
           <div className="carousel-counter">
             {currentProject + 1} of {projects.length}
           </div>
-          
           {/* Project slides below controls */}
           <div className="project-carousel-container">
-            <div 
+            <div
               className="project-slides-wrapper"
               style={{ transform: `translateX(-${currentProject * 100}%)` }}
             >
               {projects.map((project, index) => (
                 <div key={index} className="project-card-carousel">
                   <a href={project.link} target="_blank" rel="noopener noreferrer">
-                    <img 
-                      src={project.image} 
-                      alt={project.title + " preview"} 
-                      className="project-image-carousel" 
+                    <img
+                      src={project.image}
+                      alt={project.title + " preview"}
+                      className="project-image-carousel"
                     />
                   </a>
                   <div className="project-info-carousel">
@@ -143,7 +146,6 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
-
       <button
         className="back-to-top-link"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -151,7 +153,6 @@ export default function ProjectsPage() {
         ↑ Back to Top
       </button>
       <br /><br />
-
       <footer>
         <div className="social-links">
           <a href="https://github.com/JWeeks90038" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -175,4 +176,6 @@ export default function ProjectsPage() {
       <br /><br />
     </>
   );
-}
+};
+
+export default ProjectsPage;

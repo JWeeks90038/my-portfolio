@@ -1,3 +1,90 @@
+
+.availability-info.glass-card.availability-glow {
+  font-family: 'Montserrat', 'Segoe UI', 'Arial', sans-serif;
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 700;
+  background: #18181b;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px 0 #38bdf822;
+  padding: 4.4rem 2.2rem 3.6rem 2.2rem;
+  margin: 2.8rem auto;
+  max-width: 600px;
+  position: relative;
+  overflow: visible;
+  border: 2px solid #38bdf8;
+  backdrop-filter: blur(12px) brightness(1.08);
+  transition: box-shadow 0.3s, background 0.3s;
+  z-index: 2;
+  text-align: center;
+  text-shadow:
+    0 2px 12px #38bdf8aa,
+    0 1px 0 #fff,
+    0 0.5px 0 #2563eb;
+}
+
+
+/* --- Availability Section Effects --- */
+
+/* Modern, bold style: glassmorphism, drop shadow, multi-color gradient, rounded corners */
+
+
+.availability-info .availability-title {
+  font-family: 'Montserrat', 'Segoe UI', 'Arial', sans-serif;
+  color: #fff;
+  background: none;
+  text-shadow:
+    0 2px 12px #38bdf8aa,
+    0 1px 0 #fff,
+    0 0.5px 0 #2563eb;
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.availability-info .expertise-message {
+  font-family: 'Montserrat', 'Segoe UI', 'Arial', sans-serif;
+  color: #b6e3ff;
+  background: none;
+  text-shadow:
+    0 2px 12px #38bdf8aa,
+    0 1px 0 #fff,
+    0 0.5px 0 #2563eb;
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.availability-info .highlighted-text {
+  font-family: 'Montserrat', 'Segoe UI', 'Arial', sans-serif;
+  color: #38bdf8;
+  background: none;
+  text-shadow:
+    0 2px 12px #38bdf8aa,
+    0 1px 0 #fff,
+    0 0.5px 0 #2563eb;
+  font-weight: 700;
+}
+
+.availability-info .invite-text {
+  font-family: 'Montserrat', 'Segoe UI', 'Arial', sans-serif;
+  color: #38bdf8;
+  background: none;
+  text-shadow:
+    0 2px 12px #38bdf8aa,
+    0 1px 0 #fff,
+    0 0.5px 0 #2563eb;
+  font-weight: 600;
+}
+
+.availability-info .animated-border {
+  display: none;
+}
+
+@keyframes borderMove {
+  /* Removed animated border */
+}
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
 

@@ -470,24 +470,31 @@ useEffect(() => {
                         <p>
                           I believe that great software is built by those who are willing to evolve, adapt, and solve problems creatively—especially as AI and emerging technologies reshape our industry. My portfolio reflects not only my foundation in traditional web development, but also my commitment to exploring smart contracts, DeFi protocols, and AI-driven automation. I’m excited to keep moving forward, building solutions that harness the power of both blockchain and AI to meet the demands of our rapidly changing world.
                         </p>
-                        <div className="availability-info">
-                          <p><strong>Currently available for:</strong></p>
-                          <div className="rate-badges">
-                            <div className="rate-badge">
-                              <span className="service-type">Web Development</span>
-                              <span className="rate-range">$30-$75/hour</span>
-                            </div>
-                            <div className="rate-badge">
-                              <span className="service-type">Blockchain & DApps</span>
-                              <span className="rate-range">$55-$95/hour</span>
-                            </div>
-                            <div className="rate-badge">
-                              <span className="service-type">AI Integration</span>
-                              <span className="rate-range">$70-$120/hour</span>
-                            </div>
-                          </div>
-                          <p><em>Rates vary based on project complexity and timeline.</em></p>
-                        </div>
+<div className="availability-info glass-card availability-glow" data-aos="zoom-in">
+  <div className="animated-border"></div>
+  <p className="availability-title"><strong>Currently available for new projects and collaborations.</strong></p>
+  <div className="expertise-message">
+    <div style={{ marginBottom: '1.1rem' }}>
+      <span className="highlighted-text gradient-text" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>
+        Flexible project structures for development, AI/blockchain, and design—tailored to your needs.
+      </span>
+      <span className="highlighted-text gradient-text" style={{ display: 'block', fontWeight: 500 }}>
+        Fixed-price and milestone-based options available.
+      </span>
+      <span className="highlighted-text gradient-text" style={{ display: 'block', marginTop: '0.5rem', fontWeight: 500 }}>
+        Discounts for startups, non-profits, and long-term engagements.
+      </span>
+    </div>
+    <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '1rem' }}>
+      <span className="invite-text gradient-text" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>
+        Curious about working together? Reach out for a free consultation and project estimate.
+      </span>
+      <span className="invite-text gradient-text" style={{ display: 'block', fontWeight: 500 }}>
+        Contact me to discuss your project and get a personalized proposal.
+      </span>
+    </div>
+  </div>
+</div>
                         <div className="testimonials-section" data-aos="fade-up">
                           <h3>What Clients Are Saying:</h3>
                           <div className="testimonials-container">
