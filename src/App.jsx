@@ -16,6 +16,31 @@ import 'aos/dist/aos.css';
 
 
 function App() {
+  // Always declare hooks at the top
+  const location = useLocation();
+  const navigate = useNavigate();
+  // Scroll smoothly to the contact section, even from other pages
+  function handleContactClick(e) {
+    e.preventDefault();
+    if (location.pathname !== "/") {
+      navigate("/#contact");
+    } else {
+      const el = document.getElementById("contact");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
+  // Scroll to contact section if hash is present after navigation
+  useEffect(() => {
+    if (location.pathname === "/" && location.hash === "#contact") {
+      const el = document.getElementById("contact");
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 100); // Wait for DOM to render
+      }
+    }
+  }, [location.pathname, location.hash]);
   //const [scrollY, setScrollY] = useState(window.scrollY);
   const [time, setTime] = useState(0);
   const [showSplash, setShowSplash] = useState(true);
@@ -33,60 +58,66 @@ function App() {
 
   const contentRef = useRef(null);
   const footerRef = useRef(null);
+  // Trigger typewriter effect only when testimonials section is present (i.e., on home page)
+  useEffect(() => {
+    // Only run on home page
+    if (location.pathname !== "/") return;
+    // Wait for DOM to update (React may not have rendered testimonials yet)
+    const timeout = setTimeout(() => {
+      const typeWriterElements = document.querySelectorAll('.typewriter-text');
+      if (!typeWriterElements.length) return;
+      // Remove previous classes and text to allow re-typing
+      typeWriterElements.forEach(element => {
+        element.classList.remove('typed', 'typing-complete');
+        element.textContent = '';
+      });
 
-    // Orb animation parameters
-  /*const mergeThreshold = 0.985;
-  const mergeRange = 0.015;
+      const typeWriter = (element, text, speed = 50) => {
+        let index = 0;
+        element.textContent = '';
+        const type = () => {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, speed);
+          } else {
+            element.classList.add('typing-complete');
+          }
+        };
+        type();
+      };
 
-  const t = time / 600;
-  const pulse = 1 + 0.15 * Math.sin(t * 2);
-  const orbRadius = 28 * pulse;
-  const orbGlow = 0.7 + 0.3 * Math.abs(Math.sin(t * 2));
+      const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+      };
 
-  // Frame and orb positions
- const framePadding = 40;
-const centerX = 0;
-const leftX = -svgWidth / 2 + framePadding;
-const rightX = svgWidth / 2 - framePadding;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting && !entry.target.classList.contains('typed')) {
+            entry.target.classList.add('typed');
+            const text = entry.target.getAttribute('data-text');
+            setTimeout(() => {
+              typeWriter(entry.target, text, 30 + Math.random() * 20);
+            }, index * 1000);
+          }
+        });
+      }, observerOptions);
 
-  const topY = 0;
-  const footerHeight = 80; // Adjust to match your actual footer height
-const bottomMargin = -20;
-const bottomY = docHeight - orbRadius - bottomMargin;
+      typeWriterElements.forEach(element => {
+        observer.observe(element);
+      });
 
-  // Calculate scroll progress based on .site-content height
-  const scrollableHeight = contentHeight - window.innerHeight;
-  const progress = scrollableHeight > 0
-    ? Math.max(0, Math.min(scrollY / scrollableHeight, 1))
-    : 0;
-
-      // Orb Y position as you scroll
-  const getOrbY = () => {
-    const minProgress = 0.15;
-    const maxProgress = mergeThreshold;
-    if (progress < minProgress) return topY;
-    if (progress > maxProgress) return bottomY;
-    const pct = (progress - minProgress) / (maxProgress - minProgress);
-    return topY + (bottomY - topY) * pct;
-  };*/
-
-  const navigate = useNavigate();
-const location = useLocation();
-
-function handleContactClick(e) {
-  e.preventDefault();
-  if (location.pathname !== "/") {
-    navigate("/", { replace: false });
-    // Wait for navigation, then scroll
-    setTimeout(() => {
-      const el = document.getElementById("contact");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }, 100); // Delay may need tuning
-  } else {
-    const el = document.getElementById("contact");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  }
-}
+      // Cleanup
+      return () => {
+        typeWriterElements.forEach(element => {
+          observer.unobserve(element);
+        });
+      };
+    }, 0);
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
+// (Removed erroneous code)
 
 const handleSubmit = async (e) => {
   e.preventDefault();

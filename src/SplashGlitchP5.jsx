@@ -38,9 +38,20 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
       let glitchText = text;
       let gradientBg;
       let glitchActive = false;
+      let glitchIntervalId = null;
+      let glitchTimeoutId = null;
 
-      // Start glitch after 2 seconds
-      setTimeout(() => { glitchActive = true; }, 2000);
+      // Start glitch pulse after 2 seconds
+      setTimeout(() => {
+        glitchIntervalId = setInterval(() => {
+          glitchActive = true;
+          // Only show glitch for a short burst (e.g., 80ms)
+          if (glitchTimeoutId) clearTimeout(glitchTimeoutId);
+          glitchTimeoutId = setTimeout(() => {
+            glitchActive = false;
+          }, 80);
+        }, 500); // 0.5s interval
+      }, 2000);
 
       // Restore mobile-specific parameters for better performance
       const isMobileDevice = isMobile();
@@ -149,18 +160,92 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
           p.image(gradientBg, 0, 0, p.width, p.height);
         }
 
+        const baseY = p.height * 0.5;
+        const baseX = p.width * 0.5;
         if (!glitchActive) {
           // Show only the main text, no glitch
-          let baseY = p.height * 0.5;
-          let baseX = p.width * 0.5;
           p.push();
           p.textAlign(p.CENTER, p.CENTER);
           p.textSize(64);
           p.fill(200, 80, 100, 220);
           p.text(glitchText, baseX, baseY);
           p.pop();
-          return;
+        } else {
+          // --- Glitch blocks ---
+          p.textFont('monospace');
+          p.textSize(16);
+          for (let b of glitchBlocks) {
+            let yShift = p.sin(p.frameCount * 0.18 + b.t) * 12 + p.random(-2, 2); // Faster, more energetic
+            let x = b.x;
+            let y = b.y + yShift;
+            let flicker = p.random() < 0.22; // More frequent flicker
+            p.fill(flicker ? p.color(140, 80, 100, 220) : p.color(200, 80, 100, 220));
+            p.textAlign(p.LEFT, p.TOP);
+            if (b.code && b.code.length > 0) p.text(b.code, x + 8, y + 6);
+            if (p.random() < 0.03) { // More frequent jump
+              b.x = p.random(0, p.width - b.w);
+              b.y = p.random(0, p.height - b.h);
+              b.code = CODE_SNIPPETS.length > 0 ? p.random(CODE_SNIPPETS) : '';
+            }
+            b.x += p.random(-1.2, 1.2) + b.speed * 0.25 * (p.random() < 0.5 ? 1 : -1); // Faster
+            b.y += p.random(-0.5, 0.5);
+            if (b.x > p.width) b.x = -b.w;
+            if (b.x < -b.w) b.x = p.width;
+            if (b.y > p.height) b.y = -b.h;
+            if (b.y < -b.h) b.y = p.height;
+          }
+
+          // --- Glitch slices ---
+          for (let s of glitchSlices) {
+            if (p.random() < 0.16) {
+              s.dx = p.random(-120, 120);
+              s.y = p.random(p.height);
+              s.h = p.random(8, 60);
+            }
+            let y = p.int(s.y);
+            let h = p.int(s.h);
+            p.copy(0, y, p.width, h, s.dx, y, p.width, h);
+          }
+
+          // --- Glitch scanlines ---
+          for (let s of glitchScanlines) {
+            p.fill(0, 0, 0, s.alpha);
+            p.noStroke();
+            p.rect(0, s.y, p.width, 1);
+          }
+
+          // --- Glitch text (main effect) ---
+          p.push();
+          p.textAlign(p.CENTER, p.CENTER);
+          p.textSize(64);
+          // Main text in blue
+          p.fill(200, 80, 100, 220);
+          p.text(glitchText, baseX, baseY);
+          // RGB split and flicker, more dynamic
+          if (p.frameCount % 8 < 4) {
+            p.fill(140, 80, 100, 120);
+            p.text(glitchText, baseX + p.random(2, 6), baseY + p.random(1, 3));
+            p.fill(180, 80, 100, 120);
+            p.text(glitchText, baseX - p.random(2, 6), baseY - p.random(1, 3));
+          }
+          // Digital scan flicker, more frequent
+          if (p.random() < 0.22) {
+            p.fill(0, 0, 100, 60);
+            p.text(glitchText, baseX + p.random(-4, 4), baseY + p.random(-4, 4));
+          }
+          p.pop();
         }
+
+        // --- Data code overlay (numbers) ---
+        p.push();
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(18);
+        p.fill(140, 80, 100, 60);
+        const numbersY = baseY + 60;
+        let numbersCode = '';
+        for (let j = 0; j < 24; j++) numbersCode += String(p.int(p.random(0, 10)));
+        p.text(numbersCode, baseX, numbersY + p.sin(p.frameCount * 0.2) * 4);
+        p.pop();
 
         // --- Glitch blocks ---
         p.textFont('monospace');
@@ -206,8 +291,6 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
         }
 
         // --- Glitch text (main effect) ---
-        let baseY = p.height * 0.5;
-        let baseX = p.width * 0.5;
         p.push();
         p.textAlign(p.CENTER, p.CENTER);
         p.textSize(64);
@@ -226,13 +309,6 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
           p.fill(0, 0, 100, 60);
           p.text(glitchText, baseX + p.random(-4, 4), baseY + p.random(-4, 4));
         }
-        // Data code overlay (numbers)
-        p.textSize(18);
-        p.fill(140, 80, 100, 60);
-        let y = baseY + 60;
-        let code = '';
-        for (let j = 0; j < 24; j++) code += String(p.int(p.random(0, 10)));
-        p.text(code, baseX, y + p.sin(p.frameCount * 0.2) * 4);
         p.pop();
       };
     };
@@ -242,6 +318,9 @@ const SplashGlitchP5 = ({ text = "Jonas Weeks" }) => {
     return () => {
       if (myp5) myp5.remove();
       if (rafId) cancelAnimationFrame(rafId);
+      // Clear the glitch interval and timeout if they exist
+      if (typeof glitchIntervalId === 'number') clearInterval(glitchIntervalId);
+      if (typeof glitchTimeoutId === 'number') clearTimeout(glitchTimeoutId);
     };
   }, [text]);
 
