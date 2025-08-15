@@ -75,23 +75,47 @@ const ProjectsPage = () => {
         <span>Jonas Weeks</span>
       </div>
       <section className="projects-page">
-        {/* Replace video background with PNG image background */}
         <div className="projects-video-background">
           <img
             src="/coding-background.png"
             alt="Cinematic Blue Numbers Background"
             className="projects-video-bg"
             style={{
-              width: '100%',
-              height: '100%',
+              width: '100vw', // Span the full width of the screen
+              height: '50%',
               objectFit: 'cover',
               borderRadius: '1.5rem',
-              transform: `translateY(${bgOffset}px)`,
+              position: 'absolute', // Anchor the image
+              top: '75%', // Move the image lower on the page
+              left: '50%', // Center horizontally
+              transform: 'translate(-50%, -50%)', // Adjust for centering
               transition: 'transform 0.1s linear',
+              zIndex: 0, // Ensure image is below the video
             }}
           />
         </div>
         <h2>My Projects</h2>
+
+        <div className="projects-video-wrapper">
+          <video
+            className="projects-video"
+            src="/quantum-c.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'cover',
+              borderRadius: '1.5rem',
+              opacity: 0.7,
+              zIndex: 0, // Ensure video is above the image
+              position: 'relative',
+              boxShadow: '0 0 20px 10px rgba(0, 0, 0, 0.5)', // Feathered border effect
+            }}
+          />
+        </div>
         <div className="project-carousel">
           {/* Move controls to the top */}
           <div className="carousel-controls">
@@ -115,22 +139,29 @@ const ProjectsPage = () => {
             {currentProject + 1} of {projects.length}
           </div>
           {/* Project slides below controls */}
-          <div className="project-carousel-container">
+          <div className="project-carousel-container" style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div
               className="project-slides-wrapper"
               style={{ transform: `translateX(-${currentProject * 100}%)` }}
             >
               {projects.map((project, index) => (
-                <div key={index} className="project-card-carousel">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer">
-                    <img
-                      src={project.image}
-                      alt={project.title + " preview"}
-                      className="project-image-carousel"
-                    />
-                  </a>
+                <div key={index} className="project-card-carousel" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div className="project-title-container" style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                    <h3 style={{ fontSize: '1.5rem', color: 'white' }}>
+                      {project.title} <span className="project-year">({project.year})</span>
+                    </h3>
+                  </div>
+                  <div className="project-image-container">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <img
+                        src={project.image}
+                        alt={project.title + " preview"}
+                        className="project-image-carousel"
+                        style={{ width: '100%', marginBottom: '1rem' }}
+                      />
+                    </a>
+                  </div>
                   <div className="project-info-carousel">
-                    <h3>{project.title} <span className="project-year">({project.year})</span></h3>
                     <p>{project.description}</p>
                     <div className="project-meta">
                       <div className="project-tech">
