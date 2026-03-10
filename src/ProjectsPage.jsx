@@ -4,36 +4,24 @@ import "./App.css";
 
 const projects = [
   {
-    title: "Dream Mint - Coming Soon",
+    title: "Stellar Merit Statuary",
     year: 2025,
-    link: "#",
-    image: "/Dream-Mint-Screen-Grab.png",
-    description: "Dream Mint is an innovative decentralized application (dApp) that revolutionizes digital asset creation and NFT minting through AI-powered dream interpretation. Users can input their dreams, which are then transformed into unique digital artwork using advanced AI image generation APIs. The platform combines blockchain technology with artificial intelligence to create personalized, one-of-a-kind NFTs that represent users' subconscious experiences. Built on Ethereum with smart contract functionality for secure minting, trading, and royalty distribution.",
-    tech: ["React", "Solidity", "Web3.js", "OpenAI API", "Solana", "IPFS", "Stripe Integration","MetaMask & Phantom Integration"]
-  },
-   {
-    title: "Link Lapse",
-    year: 2025,
-    link: "https://linklapse.com",
-    image: "/link-lapse-grab.png",
-    description: "Link Lapse is a unique short link generator where links automatically vanish after a set period of time or a specific number of clicks. Perfect for sharing sensitive information, limited-time offers, event invites, or any content that should only be accessible for a short window. With Link Lapse, you control how long your links live—ensuring privacy, exclusivity, and peace of mind for both you and your recipients.",
-    tech: ["Python", "HTML","CSS", "Javascript", "Flask", "Firebase", "Stripe Integration", "Vercel"]
-  },
-  {
-    title: "Tikkra",
-    year: 2025,
-    link: "https://tikkra.com",
-    image: "/tikkra-grab.png",
-    description: "Tikkra is an advanced AI-powered timestamp generator designed specifically for content creators. By analyzing transcripts, Tikkra automatically generates precise and context-aware timestamps, streamlining the process of video and podcast editing. This allows creators to focus on producing high-quality content while Tikkra handles the technical details of segmenting and organizing their work. With its intuitive interface and robust AI algorithms, Tikkra empowers creators to enhance audience engagement and improve content accessibility with minimal effort.",
-    tech: ["React", "CSS", "Firebase","OpenAI API", "Stripe Integration", "Vercel", "Railway"]
+    link: "https://stellarmeritstatuary.com/",
+    image: "/stellar-merit-image.png",
+    description: "Stellar Merit Statuary is a professional website designed for a specialized concrete statue building business. The platform showcases custom concrete statuary services, featuring an elegant gallery of handcrafted sculptures, monuments, and decorative concrete artwork. The site provides detailed information about custom design processes, material options, and installation services. With integrated Stripe payment processing, customers can seamlessly place orders and make secure payments for their custom concrete sculptures. With a focus on craftsmanship and durability, Stellar Merit Statuary helps clients visualize and commission unique concrete sculptures for gardens, memorials, commercial spaces, and architectural projects.",
+    tech: ["React", "CSS", "JavaScript", "Stripe Integration", "Responsive Design", "Image Gallery", "Contact Forms", "SEO Optimization"]
   },
   {
     title: "Grubana",
     year: 2025,
-    link: "https://grubana.com",
-    image: "/grubana-grab.png",
-    description: "Grubana is a dynamic, real-time web platform that bridges the gap between food lovers and mobile food vendors. Built to support food trucks, trailers, and carts, Grubana enables users to discover nearby vendor 'drops' on an interactive map, receive live updates, and engage with vendors through time-sensitive pings and heatmaps. The platform features vendor profiles, real-time location tracking, and analytics dashboards for business owners. With robust authentication, geolocation, and notification systems, Grubana streamlines the process of finding, promoting, and enjoying local mobile cuisine, empowering both vendors and customers to connect in new and meaningful ways.",
-    tech: ["React", "JavaScript", "Tailwind CSS", "Firebase Firestore", "Firebase Authentication", "Firebase Cloud Functions", "Google Maps API", "Real-time Database", "Stripe","Vercel"]
+    link: "#",
+    image: "/grubana-thumbnail.png",
+    description: "Grubana was a dynamic, real-time web platform that bridged the gap between food lovers and mobile food vendors. Built to support food trucks, trailers, and carts, the platform enabled users to discover nearby vendor 'drops' on an interactive map, receive live updates, and engage with vendors through time-sensitive pings and heatmaps. The project featured vendor profiles, real-time location tracking, and analytics dashboards for business owners. With robust authentication, geolocation, and notification systems, Grubana streamlined the process of finding, promoting, and enjoying local mobile cuisine. Successfully developed both web and mobile applications, with the mobile app receiving approval for distribution on both Apple App Store and Google Play Store.",
+    tech: ["React", "JavaScript", "Tailwind CSS", "Firebase Firestore", "Firebase Authentication", "Firebase Cloud Functions", "Google Maps API", "Real-time Database", "Stripe", "React Native", "App Store Approval", "Google Play Approval", "Vercel"],
+    appStoreLogos: {
+      appleStore: "/apple-app-store-logo.png",
+      googlePlay: "/google-play-store-logo.png"
+    }
   },
   {
     title: "Mindful Gateway Therapy",
@@ -163,6 +151,34 @@ const ProjectsPage = () => {
                   </div>
                   <div className="project-info-carousel">
                     <p>{project.description}</p>
+                    {project.appStoreLogos && (
+                      <div className="app-store-logos" style={{ 
+                        display: 'flex', 
+                        justifyContent: 'center', 
+                        gap: '1rem', 
+                        margin: '1rem 0',
+                        flexWrap: 'wrap'
+                      }}>
+                        <img 
+                          src={project.appStoreLogos.appleStore} 
+                          alt="Available on Apple App Store" 
+                          style={{ 
+                            height: '40px', 
+                            width: 'auto',
+                            borderRadius: '8px'
+                          }}
+                        />
+                        <img 
+                          src={project.appStoreLogos.googlePlay} 
+                          alt="Available on Google Play Store" 
+                          style={{ 
+                            height: '40px', 
+                            width: 'auto',
+                            borderRadius: '8px'
+                          }}
+                        />
+                      </div>
+                    )}
                     <div className="project-meta">
                       <div className="project-tech">
                         {project.tech.map((t, idx) => (
